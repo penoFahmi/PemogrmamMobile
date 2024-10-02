@@ -4,14 +4,11 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-02T03:20:01.733413700Z">
+        <DropdownSelection timestamp="2024-10-02T04:09:34.918247900Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="FirebaseDirectAccess" identifier="reservation=projects/cobatest-31e9089b/deviceSessions/session-qlt6gg07k2a4a" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\Peno\.android\avd\Pixel_3a_API_34.avd" />
             </handle>
-            <template>
-              <DeviceId pluginId="FirebaseDirectAccess" type="TEMPLATE" identifier="model_id=gts8uwifi/33" />
-            </template>
           </Target>
         </DropdownSelection>
         <DialogSelection />
