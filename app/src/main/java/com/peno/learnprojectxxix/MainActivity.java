@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void callWhatsapp(View view) {
-        statusTV.setText("Memnggil Whatsapp");
+        statusTV.setText("Memanggil Whatsapp");
 
     }
 }
