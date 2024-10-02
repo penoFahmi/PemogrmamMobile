@@ -4,11 +4,14 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-09-19T10:29:10.971001500Z">
+        <DropdownSelection timestamp="2024-10-02T03:20:01.733413700Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="PhysicalDevice" identifier="serial=cf41d3ac7d24" />
+              <DeviceId pluginId="FirebaseDirectAccess" identifier="reservation=projects/cobatest-31e9089b/deviceSessions/session-qlt6gg07k2a4a" />
             </handle>
+            <template>
+              <DeviceId pluginId="FirebaseDirectAccess" type="TEMPLATE" identifier="model_id=gts8uwifi/33" />
+            </template>
           </Target>
         </DropdownSelection>
         <DialogSelection />
