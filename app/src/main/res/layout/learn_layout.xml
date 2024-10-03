@@ -22,11 +22,15 @@
         android:text="PENO" />
 
     <TextView
-        android:layout_weight="1"
-        android:textAlignment="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Universitas Muhammadiyah Pontianak" />
+        android:layout_height="398dp"
+        android:layout_weight="1"
+        android:text="Universitas Muhammadiyah Pontianak"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="313dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,7 +49,6 @@
             android:text="Facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
 
     </LinearLayout>
 
