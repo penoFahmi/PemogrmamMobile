@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="@string/peno"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/android_develover"
+            android:textAlignment="center" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/peno_is_a_vibrant_city_located_in_west_kalimantan_indonesia_known_for_its_rich_cultural_heritage_and_bustling_urban_atmosphere_peno_offers_a_unique_blend_of_traditional_charm_and_modern_conveniences_the_city_is_surrounded_by_lush_greenery_and_is_renowned_for_its_hospitality_making_it_a_welcoming_destination_for_visitors_and_students_alike_peno_s_strategic_location_also_serves_as_a_hub_for_education_and_commerce_in_the_region_contributing_to_its_dynamic_growth_and_development_feel_free_to_contact_me_for_buiness_purposes_at"
+            android:autoLink="email" />
+
+    </LinearLayout>
+
+</ScrollView>

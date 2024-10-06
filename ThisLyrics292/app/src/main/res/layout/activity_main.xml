@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:textSize="24sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/untungnya_hidup_harus_tetap_berjalan" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/bernadya" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/release_2024" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/album_sialnya_hidup_harus_tetap_berjalan" />
+
+    <TextView
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/genre_pop" />
+    <TextView
+        android:autoLink="web"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/youtube_https_www_youtube_com_watch_v_vsl5f43qgng" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:textAlignment="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/persis_setahun_yang_lalu_ku_dijauhkan_dari_yang_tak_ditakdirkan_untukku_n_yang_kuingat_saat_itu_yang_kulakukan_hanya_menggerutu_n_angkuh_n_lebih_percaya_cara_caraku_pilih_ragukan_rencana_sang_maha_penentu_n_n_chorus_n_untungnya_bumi_masih_berputar_n_untungnya_ku_tak_pilih_menyerah_n_untungnya_ku_bisa_rasa_hal_hal_baik_yang_datangnya_n_belakangan_n_n_bridge_n_ada_waktu_waktu_n_hal_buruk_datang_berturut_turut_n_semua_yang_tinggal_juga_yang_hilang_seberapa_pun_absurdnya_n_pasti_ada_makna_n_n_instrumental_n_n_chorus_n_untungnya_bumi_masih_berputar_n_untungnya_ku_tak_pilih_menyerah_n_itu_memang_paling_mudah_untungnya_kupilih_n_yang_lebih_susah_n_untungnya_kupakai_akal_sehat_n_untungnya_hidup_terus_berjalan_n_untungnya_ku_bisa_rasa_hal_hal_baik_yang_datangnya_n_belakangan_n_n_outro_n_untungnya_untungnya_n_hidup_harus_tetap_berjalan" />
+
+    </ScrollView>
+
+</LinearLayout>
