@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TugasActivity</string>
+    <string name="username">user</string>
+    <string name="password">pass</string>
+    <string name="failed">fialed</string>
+    <string name="welcome_admin">Welcome Admin</string>
+</resources>
