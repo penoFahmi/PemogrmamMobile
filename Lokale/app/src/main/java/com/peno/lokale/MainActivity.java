@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText orderET1, orderET2, orderET3;
     private Integer order1, order2, order3;
     private TextView totalPaymentTV;
-    private static final int ITEM1_PRICE = 50000; // Price for item 1
+    private static final int ITEM1_PRICE = 30000; // Price for item 1
     private static final int ITEM2_PRICE = 30000; // Price for item 2
     private static final int ITEM3_PRICE = 20000; // Price for item 3
     private Integer totalPayment;
