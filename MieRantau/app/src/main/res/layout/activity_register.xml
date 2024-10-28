@@ -11,25 +11,31 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:padding="16dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="162dp"
+            android:src="@drawable/logo" />
 
         <EditText
             android:id="@+id/etRegEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="Email" />
 
         <EditText
             android:id="@+id/etRegPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="Password"
             android:inputType="textPassword" />
 
         <EditText
             android:id="@+id/etRegConfirmPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:hint="Confirm Password"
             android:inputType="textPassword" />
 
