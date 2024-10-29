@@ -102,13 +102,6 @@
                                 android:inputType="textPassword"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Forgot Password?"
-                            android:textColor="@color/primaryTextColor"
-                            android:layout_gravity="end"
-                            android:layout_marginBottom="16dp"/>
 
                         <Button
                             android:id="@+id/cirLoginButton"
@@ -126,6 +119,7 @@
                             android:layout_marginTop="20dp"
                             android:gravity="center"
                             android:layout_gravity="center_horizontal"/>
+
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <!-- CardView ends here -->
