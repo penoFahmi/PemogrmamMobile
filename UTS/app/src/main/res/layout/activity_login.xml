@@ -2,55 +2,54 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    style="@style/loginParent"
     tools:context="com.peno.uts.ui.LoginActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         style="@style/parent">
 
         <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            style="@style/parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:weightSum="12">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="3"
+                    style="@style/parent"
                     android:background="@drawable/login_shape_bk"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_weight="3">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        style="@style/parent"
                         android:background="@drawable/ic_login_bk"
                         android:contentDescription="login background" />
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical"
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:orientation="vertical">
+                android:layout_marginLeft="30dp">
 
                 <TextView
                     style="@style/headerText"
                     android:layout_gravity="center"
                     android:text="XNXX"
-                    android:layout_marginTop="40dp" />
+                    android:layout_marginTop="40dp"/>
 
+
+                <!-- CardView starts here -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -129,6 +128,8 @@
                             android:layout_gravity="center_horizontal"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
+                <!-- CardView ends here -->
+
             </LinearLayout>
 
             <ImageView
