@@ -15,4 +15,8 @@
 <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
 
+    <color name="toolbarIconColor">#FFFFFF</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+    <color name="productGridBackgroundColor">#FFFFFF</color>
+
 </resources>
