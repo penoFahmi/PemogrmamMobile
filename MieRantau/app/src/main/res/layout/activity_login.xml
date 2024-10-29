@@ -17,12 +17,9 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/circularImageView"
             android:layout_width="match_parent"
-            android:layout_height="176dp"
-            android:src="@drawable/logo"
-            android:scaleType="centerCrop"
-            android:background="@drawable/circular_background"/>
+            android:layout_height="162dp"
+            android:src="@drawable/logo"/>
 
 
         <EditText
@@ -50,7 +47,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="16dp"
             android:text="@string/belum_punya_akun_daftar_di_sini"
-            android:textColor="@android:color/holo_blue_dark" /> <!-- Uji dengan warna kontras -->
+            android:textColor="@android:color/holo_blue_dark" />
 
 
     </LinearLayout>

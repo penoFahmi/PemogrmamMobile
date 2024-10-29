@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(this, "Login Failed. Check your credentials", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Login Gagal.", Toast.LENGTH_SHORT).show();
             }
         });
     }

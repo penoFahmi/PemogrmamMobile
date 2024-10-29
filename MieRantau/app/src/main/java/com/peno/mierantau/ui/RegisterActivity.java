@@ -2,6 +2,7 @@ package com.peno.mierantau.ui;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
 
         btnRegister.setOnClickListener(view -> {
+
             String email = etRegEmail.getText().toString();
             String password = etRegPassword.getText().toString();
             String confirmPassword = etRegConfirmPassword.getText().toString();
@@ -42,6 +44,9 @@ public class RegisterActivity extends AppCompatActivity {
                 editor.putString("email", email);
                 editor.putString("password", password);
                 editor.apply();
+
+                Log.d("RegisterActivity", "Data tersimpan: Email = " + email + ", Password = " + password); // Tambahkan log ini
+
 
                 Toast.makeText(this, "Register Successful", Toast.LENGTH_SHORT).show();
                 finish();  // Kembali ke LoginActivity
