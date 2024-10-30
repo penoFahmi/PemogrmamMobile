@@ -19,11 +19,12 @@
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="productGridBackgroundColor">#FFFFFF</color>
 
-
     <color name="backgroundColor">#FAFAFA</color>
     <color name="primaryColor">#FFA36C</color>
     <color name="textPrimary">#333333</color>
     <color name="textSecondary">#666666</color>
+
+
 
 
 </resources>
