@@ -1,23 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProductGridFragment">
+    android:background="@color/backgroundColor">
 
-    <LinearLayout
+    <!-- Top Background Image with Title -->
+    <ImageView
+        android:id="@+id/topBackgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/about" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="Menu Mie Rantau"
+        android:textSize="24sp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold" />
+
+    <!-- Horizontal Scrollable Categories -->
+    <HorizontalScrollView
+        android:id="@+id/categoryScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_below="@id/topBackgroundImage"
+        android:padding="8dp"
+        android:scrollbars="none">
 
-        <TextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="You did it!"
-            android:textAllCaps="true"
-            android:textSize="16sp" />
+            android:orientation="horizontal">
 
-    </LinearLayout>
-</FrameLayout>
+            <!-- Example Category Button -->
+            <Button
+                android:id="@+id/category1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mie Rantau"
+                android:background="@drawable/category_button_bg"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/primaryColor"/>
+
+            <Button
+                android:id="@+id/category2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Minuman"
+                android:background="@drawable/category_button_bg"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/primaryColor"/>
+
+            <Button
+                android:id="@+id/category3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Extra"
+                android:background="@drawable/category_button_bg"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/primaryColor"/>
+
+            <Button
+                android:id="@+id/category4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dimsum"
+                android:background="@drawable/category_button_bg"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/primaryColor"/>
+
+            <!-- Add more category buttons as needed -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Product Cards Section -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/categoryScrollView"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Product Card Example -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/card_background"
+                android:padding="16dp"
+                android:layout_marginBottom="12dp"
+                android:elevation="4dp">
+
+                <ImageView
+                    android:id="@+id/productImage"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/product_example_image"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="16dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mie Goreng Spesial"
+                        android:textSize="16sp"
+                        android:textColor="@color/textPrimary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/productDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Delicious fried noodles with a special sauce"
+                        android:textSize="12sp"
+                        android:textColor="@color/textSecondary"
+                        android:layout_marginTop="4dp"/>
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$5.00"
+                        android:textSize="14sp"
+                        android:textColor="@color/primaryColor"
+                        android:layout_marginTop="4dp"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/addToCartButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/add_button"
+                    android:text="+"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
