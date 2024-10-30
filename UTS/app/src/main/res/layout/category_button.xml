@@ -5,4 +5,5 @@
     android:background="@drawable/category_button_bg"
     android:textColor="@color/primaryColor"
     android:padding="8dp"
-    android:layout_marginEnd="8dp" />
+    android:layout_marginEnd="8dp"
+    android:contentDescription="Tombol Kategori Makanan"/>
