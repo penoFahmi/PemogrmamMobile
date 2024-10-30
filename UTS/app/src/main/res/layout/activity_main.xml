@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/about" />
+        android:src="@drawable/mierantau" />
 
     <TextView
         android:id="@+id/titleText"
@@ -22,18 +22,19 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:text="Menu Mie Rantau"
-        android:textSize="24sp"
-        android:textColor="@android:color/white"
+        android:textSize="34dp"
+        android:textColor="@android:color/holo_blue_light"
         android:textStyle="bold" />
 
-    <!-- Horizontal Scrollable Categories -->
+    <!-- Horizontal Scroll Kategori -->
     <HorizontalScrollView
         android:id="@+id/categoryScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/topBackgroundImage"
         android:padding="8dp"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:contentDescription="Daftar produk">
 
         <LinearLayout
             android:id="@+id/categoryLayout"
@@ -44,20 +45,23 @@
         </LinearLayout>
     </HorizontalScrollView>
 
-    <!-- Product Cards Section -->
+    <!-- Produck Cards  -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/categoryScrollView"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:importantForAccessibility="yes"
+        android:contentDescription="Daftar produk yang tersedia">
 
-        <!-- Product Card tampil di sini -->
+
+    <!-- Produk Card per item -->
         <LinearLayout
             android:id="@+id/productLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!-- Kartu produk ditambahkan di sini -->
+            <!-- Kartu produk  -->
 
 
         </LinearLayout>

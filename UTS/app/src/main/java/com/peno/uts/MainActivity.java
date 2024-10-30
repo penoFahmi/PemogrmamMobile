@@ -48,19 +48,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initProducts() {
-        products = new ArrayList<>();
-        products.add(new Product("Mie Telor", "Mie Telor dengan bumbu spesial", 4.50, R.drawable.mietelur, "Mie Rantau"));
-        products.add(new Product("Mie Ayam", "Mie Ayam enak", 5.00, R.drawable.e, "Mie Rantau"));
-        products.add(new Product("Mie Tahu", "Mie dengan potongan tahu goreng", 4.00, R.drawable.c, "Mie Rantau"));
-        products.add(new Product("Nasi Goreng", "Nasi goreng lezat", 3.50, R.drawable.mietelur, "Mie Rantau"));
-        products.add(new Product("Mie Rebus", "Mie rebus dengan kuah kaldu", 4.00, R.drawable.a, "Mie Rantau"));
-        products.add(new Product("Es Teh Manis", "Teh manis dingin segar", 1.50, R.drawable.esteh, "Minuman"));
-        products.add(new Product("Es Jeruk", "Jeruk peras segar", 2.00, R.drawable.tehes, "Minuman"));
-        products.add(new Product("Air Mineral", "Air mineral kemasan", 1.00, R.drawable.airtawar, "Minuman"));
-        products.add(new Product("Telur Dadar", "Telur dadar untuk pelengkap", 1.00, R.drawable.sosis, "Extra"));
-        products.add(new Product("Kerupuk", "Kerupuk renyah", 0.50, R.drawable.pangsit, "Extra"));
-        products.add(new Product("Dimsum Ayam", "Dimsum ayam yang lezat", 3.00, R.drawable.pangsit, "Dimsum"));
-        products.add(new Product("Dimsum Udang", "Dimsum udang segar", 3.50, R.drawable.esteh, "Dimsum"));
+        products = new ArrayList<>()
+        ;products.add(new Product("Mie Rebus", "Mie rebus dengan kuah kaldu", 18000.00, R.drawable.mierebus, "Mie Rantau"));
+        products.add(new Product("Kwetiau Ayam Bakso Rantau", "Kwetiau dengan ayam dan bakso khas Rantau", 19000.00, R.drawable.kwitiauayambaksorantau, "Mie Rantau"));
+        products.add(new Product("Mie Ayam Rantau Bakso", "Mie ayam dengan tambahan bakso khas Rantau", 24000.00, R.drawable.mieayamrantaubakso, "Mie Rantau"));
+        products.add(new Product("Mie Ayam Rantau Manis", "Mie ayam khas Rantau dengan kuah manis", 19000.00, R.drawable.mieayamrantaumanis, "Mie Rantau"));
+        products.add(new Product("Mie Ayam Yamin Rantau", "Mie ayam yamin dengan cita rasa khas Rantau", 15000.00, R.drawable.mieayamyaminrantau, "Mie Rantau"));
+        products.add(new Product("Mie Doang", "Mie polos tanpa tambahan lainnya", 1000.00, R.drawable.miedoang, "Mie Rantau"));
+        products.add(new Product("Mie Paket Berdua", "Paket mie untuk dua orang dengan tambahan topping", 40000.00, R.drawable.miepaketberdua, "Mie Rantau"));
+        products.add(new Product("Mie Rantau Jumbo", "Mie porsi jumbo dengan tambahan topping", 20000.00, R.drawable.mierantaujumbo, "Mie Rantau"));
+        products.add(new Product("Mie Rantau Original", "Mie dengan cita rasa khas original dari Rantau", 14000.00, R.drawable.mierantauoriginal, "Mie Rantau"));
+        products.add(new Product("Mie Rantau Pool", "Mie Rantau dengan kuah melimpah", 24000.00, R.drawable.mierantaupool, "Mie Rantau"));
+
+
+        products.add(new Product("Es Teh Manis", "Teh manis dingin segar", 4000.00, R.drawable.esteh, "Minuman"));
+        products.add(new Product("Es Jeruk", "Jeruk peras segar", 7000.00, R.drawable.esjeruk, "Minuman"));
+        products.add(new Product("Air Mineral", "Air mineral kemasan", 5000.00, R.drawable.airtawar, "Minuman"));
+        products.add(new Product("Es Dawet", "Minuman es dengan campuran cendol dan santan", 10000.00, R.drawable.esdawet, "Minuman"));
+        products.add(new Product("Es Limau", "Minuman es dengan rasa jeruk limau segar", 8000.00, R.drawable.eslimau, "Minuman"));
+
+
+        products.add(new Product("Telur Mata Sapi", "Telur Mata Sapi Setengah Matang", 50000.00, R.drawable.telurmatasapi, "Extra"));
+        products.add(new Product("Pangsit Goreng", "Pangsit Goreng Khas Rantau", 3000.50, R.drawable.pangsitgoreng, "Extra"));
+        products.add(new Product("Sosis", "Sosis Gurih", 6000.50, R.drawable.sosis, "Extra"));
+        products.add(new Product("Ayam Tabur", "Ayam Tabur Tanpa Tulang Khas Rantau", 10000.00, R.drawable.ayamtabur, "Extra"));
+        products.add(new Product("Pangsit Besar", "Pangsit yang Berisikan Ayam Tabur", 8000.50, R.drawable.pangsit, "Extra"));
+
+        products.add(new Product("Cheezy Crumble", "Dimsum ayam yang lezat", 13000.00, R.drawable.cheezycrumble, "Dimsum"));
+        products.add(new Product("Dimsum Udang", "Dimsum udang segar", 15000.00, R.drawable.dimsumudang, "Dimsum"));
     }
 
     private void displayCategories() {
