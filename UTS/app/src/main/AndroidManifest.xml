@@ -17,13 +17,13 @@
             android:exported="false" />
         <!-- Main Activity (Landing Page) -->
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".MainActivity"
             android:exported="false" /> <!-- Register Activity -->
         <activity
             android:name=".ui.RegisterActivity"
             android:exported="false" /> <!-- Login Activity (Launcher Activity) -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -2,6 +2,7 @@ package com.peno.uts;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -21,19 +22,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_main); // Pastikan ini adalah layout yang benar
+//ini kalau di comment jalan tapi product dan category tidak tampil jika tidak di comment app keluar forclose
         initCategories();
         initProducts();
         displayCategories();
         displayProducts("Mie Rantau");
 
+        // Inisialisasi tombol
         Button cartButton = findViewById(R.id.cartButton);
-        cartButton.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
+        if (cartButton != null) { // Cek null untuk keamanan
+            cartButton.setOnClickListener(view -> {
+                Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                startActivity(intent);
+            });
+        } else {
+            // Log untuk debugging jika tombol tidak ditemukan
+            Log.e("MainActivity", "Cart button not found in layout");
+        }
     }
+
 
     private void initCategories() {
         categories = new ArrayList<>();
