@@ -31,15 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Inisialisasi tombol
         Button cartButton = findViewById(R.id.cartButton);
-        if (cartButton != null) { // Cek null untuk keamanan
             cartButton.setOnClickListener(view -> {
                 Intent intent = new Intent(MainActivity.this, CartActivity.class);
                 startActivity(intent);
             });
-        } else {
-            // Log untuk debugging jika tombol tidak ditemukan
-            Log.e("MainActivity", "Cart button not found in layout");
-        }
+
     }
 
 
