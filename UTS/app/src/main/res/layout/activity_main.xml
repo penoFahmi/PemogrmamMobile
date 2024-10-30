@@ -40,8 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <!-- Tampilan Category Button disini -->
+            <!-- Tombol kategori ditambahkan di sini -->
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -52,27 +51,21 @@
         android:layout_below="@id/categoryScrollView"
         android:padding="8dp">
 
+        <!-- Product Card tampil di sini -->
         <LinearLayout
             android:id="@+id/productLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!-- Product Card tampil disini -->
-
-
+            <!-- Kartu produk ditambahkan di sini -->
             <Button
                 android:id="@+id/cartButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_margin="16dp"
                 android:text="Keranjang"
-                android:background="@color/primaryColor"
-                android:textColor="@android:color/white" />
-
-
-
+                android:layout_gravity="end"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="8dp"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

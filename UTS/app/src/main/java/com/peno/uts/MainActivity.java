@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Category> categories;
     private List<Product> products;
-    private List<Product> cart = new ArrayList<>(); // Keranjang untuk produk yang ditambahkan
+    public static List<CartItem> cartItems = new ArrayList<>(); // Daftar keranjang bersifat static
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +26,13 @@ public class MainActivity extends AppCompatActivity {
         initCategories();
         initProducts();
         displayCategories();
-        displayProducts("Mie Rantau"); // Menampilkan produk dari kategori "Mie Rantau" saat pertama kali dibuka
+        displayProducts("Mie Rantau");
 
         Button cartButton = findViewById(R.id.cartButton);
-        cartButton.setOnClickListener(v -> openCartActivity()); // Buka activity keranjang saat tombol ditekan
+        cartButton.setOnClickListener(view -> {
+            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void initCategories() {
@@ -43,44 +45,37 @@ public class MainActivity extends AppCompatActivity {
 
     private void initProducts() {
         products = new ArrayList<>();
-
-        // Produk untuk kategori Mie Rantau
-        products.add(new Product("Mie Telor", "Mie Telor dengan bumbu spesial", 4.50, R.drawable.mietelor, "Mie Rantau"));
-        products.add(new Product("Mie Ayam", "Mie Ayam enak", 5.00, R.drawable.mieayam, "Mie Rantau"));
-        products.add(new Product("Mie Tahu", "Mie dengan potongan tahu goreng", 4.00, R.drawable.mietahu, "Mie Rantau"));
-        products.add(new Product("Nasi Goreng", "Nasi goreng lezat", 3.50, R.drawable.nasigoreng, "Mie Rantau"));
-        products.add(new Product("Mie Rebus", "Mie rebus dengan kuah kaldu", 4.00, R.drawable.mierebus, "Mie Rantau"));
-
-        // Produk untuk kategori Minuman
+        products.add(new Product("Mie Telor", "Mie Telor dengan bumbu spesial", 4.50, R.drawable.mietelur, "Mie Rantau"));
+        products.add(new Product("Mie Ayam", "Mie Ayam enak", 5.00, R.drawable.e, "Mie Rantau"));
+        products.add(new Product("Mie Tahu", "Mie dengan potongan tahu goreng", 4.00, R.drawable.c, "Mie Rantau"));
+        products.add(new Product("Nasi Goreng", "Nasi goreng lezat", 3.50, R.drawable.mietelur, "Mie Rantau"));
+        products.add(new Product("Mie Rebus", "Mie rebus dengan kuah kaldu", 4.00, R.drawable.a, "Mie Rantau"));
         products.add(new Product("Es Teh Manis", "Teh manis dingin segar", 1.50, R.drawable.esteh, "Minuman"));
-        products.add(new Product("Es Jeruk", "Jeruk peras segar", 2.00, R.drawable.esjeruk, "Minuman"));
-        products.add(new Product("Air Mineral", "Air mineral kemasan", 1.00, R.drawable.airmineral, "Minuman"));
-
-        // Produk untuk kategori Extra
-        products.add(new Product("Telur Dadar", "Telur dadar untuk pelengkap", 1.00, R.drawable.telurdadar, "Extra"));
-        products.add(new Product("Kerupuk", "Kerupuk renyah", 0.50, R.drawable.kerupuk, "Extra"));
-
-        // Produk untuk kategori Dimsum
-        products.add(new Product("Dimsum Ayam", "Dimsum ayam yang lezat", 3.00, R.drawable.dimsumayam, "Dimsum"));
-        products.add(new Product("Dimsum Udang", "Dimsum udang segar", 3.50, R.drawable.dimsumudang, "Dimsum"));
+        products.add(new Product("Es Jeruk", "Jeruk peras segar", 2.00, R.drawable.tehes, "Minuman"));
+        products.add(new Product("Air Mineral", "Air mineral kemasan", 1.00, R.drawable.airtawar, "Minuman"));
+        products.add(new Product("Telur Dadar", "Telur dadar untuk pelengkap", 1.00, R.drawable.sosis, "Extra"));
+        products.add(new Product("Kerupuk", "Kerupuk renyah", 0.50, R.drawable.pangsit, "Extra"));
+        products.add(new Product("Dimsum Ayam", "Dimsum ayam yang lezat", 3.00, R.drawable.pangsit, "Dimsum"));
+        products.add(new Product("Dimsum Udang", "Dimsum udang segar", 3.50, R.drawable.esteh, "Dimsum"));
     }
 
     private void displayCategories() {
         LinearLayout categoryLayout = findViewById(R.id.categoryLayout);
+        categoryLayout.removeAllViews(); // Bersihkan tampilan sebelumnya
+
         for (Category category : categories) {
             Button categoryButton = (Button) LayoutInflater.from(this).inflate(R.layout.category_button, categoryLayout, false);
             categoryButton.setText(category.getName());
-            categoryButton.setOnClickListener(view -> displayProducts(category.getName())); // Menambahkan filter berdasarkan kategori
+            categoryButton.setOnClickListener(view -> displayProducts(category.getName()));
             categoryLayout.addView(categoryButton);
         }
     }
 
     private void displayProducts(String selectedCategory) {
         LinearLayout productLayout = findViewById(R.id.productLayout);
-        productLayout.removeAllViews(); // Bersihkan produk yang ada sebelumnya
+        productLayout.removeAllViews();
 
         for (Product product : products) {
-            // Tampilkan hanya produk yang sesuai dengan kategori yang dipilih
             if (product.getCategory().equals(selectedCategory)) {
                 LinearLayout productCard = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.product_card, productLayout, false);
 
@@ -92,23 +87,22 @@ public class MainActivity extends AppCompatActivity {
 
                 productName.setText(product.getName());
                 productDescription.setText(product.getDescription());
-                productPrice.setText(String.format("$%.2f", product.getPrice()));
+                productPrice.setText(String.format("RP %.2f", product.getPrice()));
                 productImage.setImageResource(product.getImageResourceId());
 
                 addToCartButton.setOnClickListener(view -> addToCart(product));
-
                 productLayout.addView(productCard);
             }
         }
     }
 
     private void addToCart(Product product) {
-        cart.add(product); // Tambahkan produk ke dalam keranjang
-    }
-
-    private void openCartActivity() {
-        Intent intent = new Intent(this, CartActivity.class);
-        intent.putParcelableArrayListExtra("cart", new ArrayList<>(cart));
-        startActivity(intent);
+        for (CartItem item : cartItems) {
+            if (item.getProduct().getName().equals(product.getName())) {
+                item.setQuantity(item.getQuantity() + 1);
+                return;
+            }
+        }
+        cartItems.add(new CartItem(product, 1));
     }
 }

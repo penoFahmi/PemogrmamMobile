@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText etRegName, etRegEmail, etRegPassword, etRegConfirmPassword;
     private Button btnRegister;
+    private TextView btnLogin;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -30,10 +32,15 @@ public class RegisterActivity extends AppCompatActivity {
         etRegPassword = findViewById(R.id.etRegPassword);
         etRegConfirmPassword = findViewById(R.id.etRegConfirmPassword);
         btnRegister = findViewById(R.id.btnRegister);
+        btnLogin = findViewById(R.id.btnLogin);
 
         sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         btnRegister.setOnClickListener(v -> registerUser());
+        btnLogin.setOnClickListener(v -> {
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            finish();
+        });
     }
 
     private void registerUser() {
