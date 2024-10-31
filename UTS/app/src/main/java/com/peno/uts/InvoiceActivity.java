@@ -34,8 +34,8 @@ public class InvoiceActivity extends AppCompatActivity {
         confirmButton = findViewById(R.id.confirmButton);
 
         // Set Nama Toko dan Alamat
-        storeNameTextView.setText("Nama Toko: Mie Rantau");
-        storeAddressTextView.setText("Alamat: Jl. Merdeka No.123");
+        storeNameTextView.setText("Mie Rantau");
+        storeAddressTextView.setText("Alamat: Jl. Daya Nasiaonal");
 
         // Set Tanggal Pembelian
         String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());

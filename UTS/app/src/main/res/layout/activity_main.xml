@@ -15,16 +15,16 @@
         android:scaleType="centerCrop"
         android:src="@drawable/mierantau" />
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Menu Mie Rantau"
-        android:textSize="34dp"
-        android:textColor="@android:color/holo_blue_light"
-        android:textStyle="bold" />
+<!--    <TextView-->
+<!--        android:id="@+id/titleText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="50dp"-->
+<!--        android:text="Menu Mie Rantau"-->
+<!--        android:textSize="34dp"-->
+<!--        android:textColor="@android:color/holo_blue_light"-->
+<!--        android:textStyle="bold" />-->
 
     <!-- Horizontal Scroll Kategori -->
     <HorizontalScrollView

@@ -68,13 +68,9 @@
                         android:gravity="center">
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            style="@style/headerTextPrimary"
                             android:text="Login"
-                            android:textSize="24sp"
-                            android:textColor="@color/black"
-                            android:layout_marginBottom="20dp"
-                            android:gravity="center"/>
+                            android:layout_marginTop="@dimen/loginViewsMargin"/>
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"

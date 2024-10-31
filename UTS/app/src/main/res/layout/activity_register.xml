@@ -127,10 +127,11 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <Button
-                            android:background="@color/black"
+                            android:layout_margin="11dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:id="@+id/btnRegister"
-                            style="@style/loginButton"
-                            android:layout_gravity="center"
+                            android:textColor="@color/white"
                             android:text="Register"/>
 
                         <TextView
@@ -145,18 +146,8 @@
 
 
                 </androidx.cardview.widget.CardView>
-                <!-- CardView ends here -->
 
             </LinearLayout>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:src="@android:drawable/ic_menu_close_clear_cancel" />
         </RelativeLayout>
 
     </ScrollView>
