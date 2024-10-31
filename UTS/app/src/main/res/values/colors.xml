@@ -27,5 +27,10 @@
     <color name="primaryColor">#FFA000</color>
     <color name="textPrimary">#3E2723</color>
     <color name="textSecondary">#795548</color>
-    <color name="bgMain">#FFFDE7</color> 
+    <color name="bgMain">#FFFDE7</color>
+
+    <!-- warna tombol   -->
+    <color name="btnDangar">#FF0000</color>
+    <color name="btnPrimary">#03A9F4</color>
+
 </resources>

@@ -25,5 +25,32 @@
     <string name="shr_bottoms_label">Bottoms</string>
     <string name="shr_dresses_label">Dresses</string>
     <string name="shr_account_label">My Account</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="harga">Harga</string>
+    <string name="keranjang_belanja">Keranjang Belanja</string>
+    <string name="daftar_barang_di_keranjang_belanjaan_anda">Daftar barang di keranjang belanjaan Anda</string>
+    <string name="total_rp_0_00">Total: RP 0.00</string>
+    <string name="bayar">Bayar</string>
+    <string name="tambah_produk">Tambah Produk</string>
+    <string name="batalkan_pembayaran">Batalkan Pembayaran</string>
+    <string name="konfirmasi_pembayaran">Konfirmasi Pembayaran</string>
+    <string name="total_pembayaran_rp_0_00">Total Pembayaran: RP 0.00</string>
+    <string name="detail_pembelian">Detail Pembelian</string>
+    <string name="nama_pembeli">Nama Pembeli:</string>
+    <string name="tanggal_pembelian">Tanggal Pembelian:</string>
+    <string name="alamat_jl_merdeka_no_123">Alamat: Jl. Merdeka No.123</string>
+    <string name="mie_rantau">Mie Rantau</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_background">login background</string>
+    <string name="y">Mie Rantau</string>
+    <string name="belum_punya_akun_daftar">Belum punya akun? Daftar</string>
+    <string name="daftar_produk_yang_tersedia">Daftar produk yang tersedia</string>
+    <string name="daftar_produk">Daftar produk</string>
+    <string name="keranjang">Keranjang</string>
+    <string name="terima_kasih_telah_berbelanja_dengan_kami">Terima kasih telah berbelanja dengan kami!</string>
+    <string name="pesan_lagi">Pesan Lagi</string>
+    <string name="rp_0_00">RP 0.00</string>
 
 </resources>

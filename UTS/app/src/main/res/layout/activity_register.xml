@@ -132,6 +132,7 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/btnRegister"
                             android:textColor="@color/white"
+                            android:backgroundTint="@color/primaryColor"
                             android:text="Register"/>
 
                         <TextView

@@ -33,6 +33,12 @@ public class InvoiceActivity extends AppCompatActivity {
         productListLayout = findViewById(R.id.productListLayout);
         confirmButton = findViewById(R.id.confirmButton);
 
+        Button cartButton = findViewById(R.id.cancelButton);
+        cartButton.setOnClickListener(view -> {
+            Intent intent = new Intent(InvoiceActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+
         // Set Nama Toko dan Alamat
         storeNameTextView.setText("Mie Rantau");
         storeAddressTextView.setText("Alamat: Jl. Daya Nasiaonal");

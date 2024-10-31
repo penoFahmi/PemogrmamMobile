@@ -6,8 +6,6 @@
     android:background="@color/bgMain"
     android:id="@+id/main"
     tools:context="com.peno.uts.MainActivity">
-
-    <!-- Top Background Image with Title -->
     <ImageView
         android:id="@+id/topBackgroundImage"
         android:layout_width="match_parent"
@@ -26,7 +24,6 @@
 <!--        android:textColor="@android:color/holo_blue_light"-->
 <!--        android:textStyle="bold" />-->
 
-    <!-- Horizontal Scroll Kategori -->
     <HorizontalScrollView
         android:id="@+id/categoryScrollView"
         android:layout_width="match_parent"
@@ -34,14 +31,13 @@
         android:layout_below="@id/topBackgroundImage"
         android:padding="8dp"
         android:scrollbars="none"
-        android:contentDescription="Daftar produk">
+        android:contentDescription="@string/daftar_produk">
 
         <LinearLayout
             android:id="@+id/categoryLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <!-- Tombol kategori ditambahkan di sini -->
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -52,16 +48,14 @@
         android:layout_below="@id/categoryScrollView"
         android:padding="8dp"
         android:importantForAccessibility="yes"
-        android:contentDescription="Daftar produk yang tersedia">
+        android:contentDescription="@string/daftar_produk_yang_tersedia">
 
-
-    <!-- Produk Card per item -->
         <LinearLayout
             android:id="@+id/productLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <!-- Kartu produk  -->
+
 
 
         </LinearLayout>
@@ -71,7 +65,7 @@
         android:id="@+id/cartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Keranjang"
+        android:text="@string/keranjang"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/orange_yellow"
         android:layout_alignParentEnd="true"

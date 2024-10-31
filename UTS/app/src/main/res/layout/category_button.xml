@@ -3,9 +3,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Kategori"
-    android:textColor="@color/loginPageBackgroundColor"
+    android:textColor="@color/btnDangar"
     android:padding="12dp"
     android:layout_marginEnd="12dp"
-    android:background="@drawable/button_background"
+    android:backgroundTint="@color/colorAccent"
     android:elevation="4dp"
     android:contentDescription="Tombol Kategori Makanan"/>

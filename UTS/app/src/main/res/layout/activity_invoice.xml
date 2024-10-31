@@ -17,12 +17,11 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Informasi Toko -->
             <TextView
                 android:id="@+id/storeNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mie Rantau"
+                android:text="@string/mie_rantau"
                 android:textSize="18sp"
                 android:textStyle="bold"/>
 
@@ -30,39 +29,35 @@
                 android:id="@+id/storeAddressTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alamat: Jl. Merdeka No.123"
+                android:text="@string/alamat_jl_merdeka_no_123"
                 android:textSize="14sp"
                 android:layout_marginTop="4dp"/>
 
-            <!-- Informasi Tanggal Pembelian -->
             <TextView
                 android:id="@+id/purchaseDateTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Pembelian: "
+                android:text="@string/tanggal_pembelian"
                 android:textSize="14sp"
                 android:layout_marginTop="8dp"/>
 
-            <!-- Nama Pembeli -->
             <TextView
                 android:id="@+id/customerNameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Pembeli: "
+                android:text="@string/nama_pembeli"
                 android:textSize="14sp"
                 android:layout_marginTop="8dp"/>
 
-            <!-- Rincian Produk -->
             <TextView
                 android:id="@+id/invoiceTitleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Detail Pembelian"
+                android:text="@string/detail_pembelian"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"/>
 
-            <!-- Dynamic Product List -->
             <LinearLayout
                 android:id="@+id/productListLayout"
                 android:layout_width="match_parent"
@@ -71,25 +66,32 @@
                 android:layout_marginTop="8dp">
             </LinearLayout>
 
-            <!-- Total Pembayaran -->
             <TextView
                 android:id="@+id/totalInvoiceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Pembayaran: RP 0.00"
+                android:text="@string/total_pembayaran_rp_0_00"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginTop="16dp"/>
 
-            <!-- Tombol Konfirmasi Pembayaran -->
             <Button
                 android:id="@+id/confirmButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Konfirmasi Pembayaran"
+                android:text="@string/konfirmasi_pembayaran"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="16dp"
                 android:backgroundTint="@color/colorAccent"/>
+            <Button
+                android:id="@+id/cancelButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/batalkan_pembayaran"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/btnDangar"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </ScrollView>
+

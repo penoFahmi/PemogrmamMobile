@@ -3,31 +3,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bgMain"
     android:gravity="center"
     android:padding="16dp">
 
-    <!-- Animasi centang -->
     <ImageView
         android:id="@+id/checkmarkImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/ic_checkmark"
-        android:visibility="gone"/>
+        android:visibility="visible"
+        android:layout_marginBottom="24dp"/>
 
     <TextView
         android:id="@+id/successMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Pembayaran Berhasil!"
-        android:textSize="24sp"
+        android:text="Pembayaran Anda Berhasil!"
+        android:textSize="26sp"
         android:textStyle="bold"
-        android:layout_marginTop="16dp" />
+        android:textColor="@color/primaryColor"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/thankYouMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/terima_kasih_telah_berbelanja_dengan_kami"
+        android:textSize="16sp"
+        android:textColor="@color/textSecondary"
+        android:layout_marginBottom="24dp"/>
 
     <Button
         android:id="@+id/continueButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pesan Lagi"
-        android:layout_marginTop="24dp"
-        android:textColor="@android:color/white"/>
+        android:text="@string/pesan_lagi"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:elevation="4dp"/>
 </LinearLayout>
