@@ -3,7 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     android:padding="16dp">
+
+    <!-- Animasi centang -->
+    <ImageView
+        android:id="@+id/checkmarkImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_checkmark"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/successMessage"
@@ -11,6 +20,14 @@
         android:layout_height="wrap_content"
         android:text="Pembayaran Berhasil!"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
 
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pesan Lagi"
+        android:layout_marginTop="24dp"
+        android:textColor="@android:color/white"/>
 </LinearLayout>

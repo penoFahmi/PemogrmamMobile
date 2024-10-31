@@ -14,6 +14,10 @@
 
     <!--colros for card-->
     <color name="whiteCardColor">#fff</color>
+    <color name="orange_yellow">#FFA500</color>
+
+
+    <color name="productCard">#E95020</color>
 
     <color name="toolbarIconColor">#FFFFFF</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
@@ -23,6 +27,7 @@
     <color name="primaryColor">#FFA36C</color>
     <color name="textPrimary">#333333</color>
     <color name="textSecondary">#666666</color>
+    <color name="bgMain">#FFED0D</color>
 
 
 
