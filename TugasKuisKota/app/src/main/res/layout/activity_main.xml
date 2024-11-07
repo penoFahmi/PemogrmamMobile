@@ -1,19 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
+        android:layout_gravity="center"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Kuis" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:paddingTop="34dp"
+        android:layout_width="291dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Manakah nama Kota di Kalimantan Barat ?" /> <!-- Perbaikan di sini -->
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <CheckBox
+                android:id="@+id/pontianakCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pontianak" />
+
+            <CheckBox
+                android:id="@+id/majalengkaCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Majalengka" />
+
+            <CheckBox
+                android:id="@+id/singkawangCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Singkawang" />
+
+            <CheckBox
+                android:id="@+id/melawiCB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Melawi" />
+
+        </LinearLayout>
+
+        <Button
+            android:onClick="submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jawab"/>
+
+    </LinearLayout>
+</LinearLayout>
