@@ -1,8 +1,10 @@
 package com.peno.uasproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,6 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private EditText etRegisterUsername, etRegisterPassword, etRegisterConfirmPassword;
     private Button btnRegister;
+    private TextView tvBackLogin;
     private DatabaseHelper databaseHelper;
 
     @Override
@@ -32,6 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         etRegisterPassword = findViewById(R.id.etRegisterPassword);
         etRegisterConfirmPassword = findViewById(R.id.etRegisterConfirmPassword);
         btnRegister = findViewById(R.id.btnRegister);
+        tvBackLogin = findViewById(R.id.tvBackLogin);
 
         databaseHelper = new DatabaseHelper(this);
 
@@ -48,13 +52,20 @@ public class RegisterActivity extends AppCompatActivity {
             } else {
                 boolean success = databaseHelper.registerUser(username, password);
                 if (success) {
-                    Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Registration berhasil", Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(this, "Username already exists", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Username sudah ada", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        tvBackLogin.setOnClickListener(view -> {
+            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
     }
 
 }
