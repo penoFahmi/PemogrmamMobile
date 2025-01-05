@@ -38,21 +38,27 @@ public class LoginActivity extends AppCompatActivity {
 
         databaseHelper = new DatabaseHelper(this);
 
+
         btnLogin.setOnClickListener(view -> {
             String username = etUsername.getText().toString().trim();
             String password = etPassword.getText().toString().trim();
 
-            if (username.equals("admin") && password.equals("admin")){
-                Intent intent = new Intent(LoginActivity.this, AdminMainActivity.class);
+            if (username.equals("admin") && password.equals("admin")) {
+                Intent intent = new Intent(LoginActivity.this, AdminDashboardActivity.class);
                 startActivity(intent);
                 finish();
-            }else if (databaseHelper.checkUser(username, password)) {
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            } else if (databaseHelper.checkUser(username, password)) {
+                Intent intent = new Intent(LoginActivity.this, UserDashboardActivity.class);
                 startActivity(intent);
                 finish();
             } else {
                 Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        tvRegister.setOnClickListener(view -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
         });
     }
 }
