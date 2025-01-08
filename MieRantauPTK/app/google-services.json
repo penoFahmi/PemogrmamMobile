@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "476531761335",
+    "project_id": "mie-rantau",
+    "storage_bucket": "mie-rantau.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476531761335:android:4462784cbfa88a296aad32",
+        "android_client_info": {
+          "package_name": "com.peno.mierantauptk"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7J_V_bGmi2-vJNEM64JvjGImoMbEhe6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

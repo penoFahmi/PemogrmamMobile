@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.peno.mierantauptk" />
+                  <option name="mobileSdkAppId" value="1:476531761335:android:4462784cbfa88a296aad32" />
+                  <option name="projectId" value="mie-rantau" />
+                  <option name="projectNumber" value="476531761335" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
