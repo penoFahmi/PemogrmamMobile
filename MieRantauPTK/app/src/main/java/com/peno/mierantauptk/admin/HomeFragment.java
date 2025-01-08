@@ -5,7 +5,9 @@ import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,30 +30,64 @@ public class HomeFragment extends Fragment {
         userCard = view.findViewById(R.id.userCard);
 
         // Set onClickListener
+//        KelolaMenuCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Open MenuFragment
+//                Intent intent = new Intent(getActivity(), MenuFragment.class);
+//                startActivity(intent);
+//            }
+//        });
+//        penjualanCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Open PenjualanFragment
+//                Intent intent = new Intent(getActivity(), OrdersFragment.class);
+//                startActivity(intent);
+//            }
+//        });
+//        userCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                // Open UserFragment
+//                Intent intent = new Intent(getActivity(), UsersFragment.class);
+//            }
+//        });
+
         KelolaMenuCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Open MenuFragment
-                Intent intent = new Intent(getActivity(), MenuFragment.class);
-                startActivity(intent);
-            }
-        });
-        penjualanCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open PenjualanFragment
-                Intent intent = new Intent(getActivity(), OrdersFragment.class);
-                startActivity(intent);
-            }
-        });
-        userCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Open UserFragment
-                Intent intent = new Intent(getActivity(), UsersFragment.class);
+                // Replace with MenuFragment
+                replaceFragment(new MenuFragment());
             }
         });
 
+        penjualanCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Replace with OrdersFragment
+                replaceFragment(new OrdersFragment());
+            }
+        });
+
+        userCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Replace with UsersFragment
+                replaceFragment(new UsersFragment());
+            }
+        });
         return view;
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        try {
+            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container_fragment, fragment);
+            transaction.commit();
+            Log.d("HomeFragment", "Fragment replaced successfully");
+        } catch (Exception e) {
+            Log.e("HomeFragment", "Error during fragment transaction: " + e.getMessage());
+        }
     }
 }

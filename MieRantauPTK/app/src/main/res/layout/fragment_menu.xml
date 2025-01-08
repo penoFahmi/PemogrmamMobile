@@ -7,11 +7,28 @@
     android:padding="16dp"
     tools:context=".admin.MenuFragment">
 
+    <TextView
+        android:id="@+id/tv_menu_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Daftar Menu"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:paddingBottom="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_menu_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <Button
         android:id="@+id/btn_add_menu"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tambah Menu" />
-
+        android:text="Tambah Menu"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>
