@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="Login"
                 android:textColor="@android:color/white"
-                android:background="@color/purple_500"
+                android:background="@color/colorPrimary"
                 android:padding="16dp"
                 android:layout_marginBottom="16dp" />
 
@@ -77,7 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Register as User"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/colorPrimaryDark"
                 android:textSize="14sp"
                 android:gravity="center" />
         </LinearLayout>

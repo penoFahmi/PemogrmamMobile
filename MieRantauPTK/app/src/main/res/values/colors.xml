@@ -2,7 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- Warna utama -->
+    <color name="colorPrimary">#D35400</color> <!-- Oranye lembut -->
+    <color name="colorPrimaryDark">#A04000</color> <!-- Oranye gelap -->
+    <color name="colorAccent">#F1C40F</color> <!-- Kuning pastel -->
+    <!-- Tambahan jika diperlukan -->
+    <color name="colorSecondary">#C0392B</color> <!-- Merah lembut -->
+    <color name="colorSecondaryDark">#922B21</color> <!-- Merah gelap -->
 </resources>
