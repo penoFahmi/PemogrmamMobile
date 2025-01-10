@@ -29,7 +29,7 @@ public class MenuModel {
         return deskripsi;
     }
 
-    public String getFotoUrl() {
+    public String getFoto() {
         return fotoUrl;
     }
 

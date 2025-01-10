@@ -1,6 +1,7 @@
 package com.peno.mierantauptk.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.peno.mierantauptk.R;
+import com.peno.mierantauptk.admin.MenuDetailActivity;
 import com.peno.mierantauptk.models.MenuModel;
 
 import java.util.List;
@@ -35,10 +38,17 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     @Override
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         MenuModel menu = menuList.get(position);
+
         holder.tvNamaMenu.setText(menu.getNamaMenu());
         holder.tvHarga.setText("Rp " + menu.getHarga());
-        // Gunakan Glide atau Picasso untuk memuat gambar jika URL tersedia
-        // Glide.with(context).load(menu.getFotoUrl()).into(holder.imgMenu);
+
+        Glide.with(context).load(menu.getFoto()).into(holder.imgMenu);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MenuDetailActivity.class);
+            intent.putExtra("menu_id", menu.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override

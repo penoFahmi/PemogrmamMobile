@@ -320,15 +320,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_MENU, null);
     }
 
-    public int updateMenu(int id, String namaMenu, String deskripsi, String foto, double harga, int stok, int categoryId) {
+//    public int updateMenu(int id, String namaMenu, String deskripsi, String foto, double harga, int stok, int categoryId) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COLUMN_NAMA_MENU, namaMenu);
+//        values.put(COLUMN_DESKRIPSI, deskripsi);
+//        values.put(COLUMN_FOTO, foto);
+//        values.put(COLUMN_HARGA, harga);
+//        values.put(COLUMN_STOK, stok);
+//        values.put(COLUMN_CATEGORY_ID, categoryId);
+//        return db.update(TABLE_MENU, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+//    }
+
+    public int updateMenu(int id, ContentValues values) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAMA_MENU, namaMenu);
-        values.put(COLUMN_DESKRIPSI, deskripsi);
-        values.put(COLUMN_FOTO, foto);
-        values.put(COLUMN_HARGA, harga);
-        values.put(COLUMN_STOK, stok);
-        values.put(COLUMN_CATEGORY_ID, categoryId);
         return db.update(TABLE_MENU, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
 
@@ -336,6 +341,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_MENU, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
+
+    public Cursor getAllCategories() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_CATEGORY, null);
+    }
+
+    public Cursor getMenuById(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_MENU + " WHERE " + COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+    }
+
 
     // CRUD for Cart
     public long addToCart(int userId, int menuId, int jumlah, double subtotal) {

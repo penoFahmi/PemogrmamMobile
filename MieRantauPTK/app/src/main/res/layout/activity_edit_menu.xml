@@ -1,10 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".admin.crud.EditMenuActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Edit Menu"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:textColor="@color/black" />
+
+        <!-- Nama Menu -->
+        <EditText
+            android:id="@+id/et_nama_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Menu"
+            android:inputType="text" />
+
+        <!-- Deskripsi -->
+        <EditText
+            android:id="@+id/et_deskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deskripsi"
+            android:inputType="textMultiLine"
+            android:layout_marginTop="8dp" />
+
+        <!-- Harga -->
+        <EditText
+            android:id="@+id/et_harga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="8dp" />
+
+        <!-- Stok -->
+        <EditText
+            android:id="@+id/et_stok"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Stok"
+            android:inputType="number"
+            android:layout_marginTop="8dp" />
+
+        <!-- Pilihan Kategori -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Kategori"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
+
+        <RadioGroup
+            android:id="@+id/rg_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <!-- Nama Gambar -->
+        <TextView
+            android:id="@+id/tv_nama_gambar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Gambar"
+            android:text="Gambar saat ini: "
+            android:textStyle="italic"
+            android:layout_marginTop="16dp" />
+
+        <!-- Tombol Pilih Gambar -->
+        <Button
+            android:id="@+id/btn_select_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pilih Gambar Baru"
+            android:layout_marginTop="8dp" />
+
+        <!-- Preview Gambar -->
+        <ImageView
+            android:id="@+id/img_preview"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/orang" />
+
+        <!-- Tombol Simpan -->
+        <Button
+            android:id="@+id/btn_simpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simpan Perubahan"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+</ScrollView>
