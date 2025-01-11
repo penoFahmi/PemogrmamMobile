@@ -15,28 +15,34 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Header -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tambah Menu"
+            android:text="Tambah Menu Baru"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
             android:paddingBottom="16dp" />
 
+        <!-- Nama Menu -->
         <EditText
             android:id="@+id/et_nama_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Menu" />
+            android:hint="Nama Menu"
+            android:inputType="text" />
 
+        <!-- Deskripsi -->
         <EditText
             android:id="@+id/et_deskripsi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Deskripsi"
+            android:inputType="textMultiLine"
             android:layout_marginTop="8dp" />
 
+        <!-- Harga -->
         <EditText
             android:id="@+id/et_harga"
             android:layout_width="match_parent"
@@ -45,14 +51,16 @@
             android:inputType="numberDecimal"
             android:layout_marginTop="8dp" />
 
+        <!-- Tanggal -->
         <EditText
-            android:id="@+id/et_stok"
+            android:id="@+id/et_tanggal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Stok"
-            android:inputType="number"
+            android:hint="Tanggal (YYYY-MM-DD)"
+            android:focusable="false"
             android:layout_marginTop="8dp" />
 
+        <!-- Pilihan Kategori -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,22 +68,48 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp" />
 
-        <!-- RadioGroup untuk kategori -->
         <RadioGroup
             android:id="@+id/rg_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp" />
 
-        <EditText
-            android:id="@+id/et_nama_gambar"
+        <!-- Checkboxes dinamis -->
+        <LinearLayout
+            android:id="@+id/layout_checkboxes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nama Gambar"
-            android:inputType="text"
+            android:orientation="vertical"
             android:layout_marginTop="8dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promo dan Ketersediaan"
+            android:textStyle="bold"/>
 
+        <!-- Promo dan Ketersediaan -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <CheckBox
+                android:id="@+id/cb_promo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promo" />
+
+            <CheckBox
+                android:id="@+id/cb_tersedia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tersedia"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <!-- Pilih Gambar -->
         <Button
             android:id="@+id/btn_select_image"
             android:layout_width="match_parent"
@@ -87,16 +121,19 @@
             android:id="@+id/img_preview"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
             android:src="@drawable/miemangkok" />
 
+        <!-- Tombol Simpan -->
         <Button
             android:id="@+id/btn_simpan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Simpan"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </ScrollView>

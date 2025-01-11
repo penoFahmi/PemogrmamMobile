@@ -6,15 +6,26 @@ public class MenuModel {
     private String deskripsi;
     private String fotoUrl;
     private double harga;
-    private int stok;
+    private String kategori;
+    private int promo;
+    private int tersedia;
+    private int levelPedas;
+    private String ukuranMinuman;
+    private String tanggal;
 
-    public MenuModel(int id, String namaMenu, String deskripsi, String fotoUrl, double harga, int stok) {
+    public MenuModel(int id, String namaMenu, String deskripsi, String fotoUrl, double harga, String kategori,
+                     int promo, int tersedia, int levelPedas, String ukuranMinuman, String tanggal) {
         this.id = id;
         this.namaMenu = namaMenu;
         this.deskripsi = deskripsi;
         this.fotoUrl = fotoUrl;
         this.harga = harga;
-        this.stok = stok;
+        this.kategori = kategori;
+        this.promo = promo;
+        this.tersedia = tersedia;
+        this.levelPedas = levelPedas;
+        this.ukuranMinuman = ukuranMinuman;
+        this.tanggal = tanggal;
     }
 
     public int getId() {
@@ -29,7 +40,7 @@ public class MenuModel {
         return deskripsi;
     }
 
-    public String getFoto() {
+    public String getFotoUrl() {
         return fotoUrl;
     }
 
@@ -37,7 +48,27 @@ public class MenuModel {
         return harga;
     }
 
-    public int getStok() {
-        return stok;
+    public String getKategori() {
+        return kategori;
+    }
+
+    public int getPromo() {
+        return promo;
+    }
+
+    public int getTersedia() {
+        return tersedia;
+    }
+
+    public int getLevelPedas() {
+        return levelPedas;
+    }
+
+    public String getUkuranMinuman() {
+        return ukuranMinuman;
+    }
+
+    public String getTanggal() {
+        return tanggal;
     }
 }

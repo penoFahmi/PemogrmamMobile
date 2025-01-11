@@ -14,7 +14,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Table Names
     public static final String TABLE_ROLE = "Role";
     public static final String TABLE_USER = "User";
-    public static final String TABLE_CATEGORY = "Category";
     public static final String TABLE_MENU = "Menu";
     public static final String TABLE_CART = "Cart";
     public static final String TABLE_TRANSAKSI = "Transaksi";
@@ -34,30 +33,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_PASSWORD = "password";
     public static final String COLUMN_ROLE_ID = "role_id";
 
-    // Category Table Columns
-    public static final String COLUMN_NAMA_CATEGORY = "nama_category";
 
-    // Menu Table Columns
+    // Tabel: Menu
     public static final String COLUMN_NAMA_MENU = "nama_menu";
     public static final String COLUMN_DESKRIPSI = "deskripsi";
     public static final String COLUMN_FOTO = "foto";
     public static final String COLUMN_HARGA = "harga";
-    public static final String COLUMN_STOK = "stok";
-    public static final String COLUMN_CATEGORY_ID = "category_id";
-
-    // Cart Table Columns
-    public static final String COLUMN_USER_ID = "user_id";
-    public static final String COLUMN_MENU_ID = "menu_id";
-    public static final String COLUMN_JUMLAH = "jumlah";
-    public static final String COLUMN_SUBTOTAL = "subtotal";
-
-    // Transaksi Table Columns
+    public static final String COLUMN_KATEGORI = "kategori_menu";
+    public static final String COLUMN_PROMO = "promo";
+    public static final String COLUMN_TERSEDIA = "tersedia";
+    public static final String COLUMN_LEVEL_PEDAS = "level_pedas";
+    public static final String COLUMN_UKURAN_MINUMAN = "ukuran_minuman";
     public static final String COLUMN_TANGGAL = "tanggal";
+
+//    // Cart Table Columns
+//    public static final String COLUMN_USER_ID = "user_id";
+//    public static final String COLUMN_MENU_ID = "menu_id";
+//    public static final String COLUMN_JUMLAH = "jumlah";
+//    public static final String COLUMN_SUBTOTAL = "subtotal";
+
+    // Tabel: Transaksi
+    public static final String COLUMN_TANGGAL_TRANSAKSI = "tanggal_transaksi";
     public static final String COLUMN_TOTAL_HARGA = "total_harga";
-    public static final String COLUMN_STATUS = "status";
+    public static final String COLUMN_METODE_PEMBAYARAN = "metode_pembayaran";
+    public static final String COLUMN_KASIR = "kasir";
 
     // DetailTransaksi Table Columns
-    public static final String COLUMN_TRANSAKSI_ID = "transaksi_id";
+
+    // Tabel: Detail Transaksi
+    public static final String COLUMN_ID_MENU = "id_menu";
+    public static final String COLUMN_JUMLAH = "jumlah";
+    public static final String COLUMN_SUB_TOTAL = "sub_total";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -94,78 +100,60 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "('admin', 'admin@mierantau.com', '081234567890', 'admin', 1)");
         }
 
-        // Create Category Table
-        db.execSQL("CREATE TABLE " + TABLE_CATEGORY + " (" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_NAMA_CATEGORY + " TEXT)");
-
-
-        // Tambahkan data default untuk Category
-        if (!isCategoryDataExists(db)) {
-            db.execSQL("INSERT INTO " + TABLE_CATEGORY + " (" + COLUMN_NAMA_CATEGORY + ") VALUES " +
-                    "('Mie'), " +
-                    "('Minuman'), " +
-                    "('Extra'), " +
-                    "('Dimsum')");
-        }
 
         // Create Menu Table
-        db.execSQL("CREATE TABLE " + TABLE_MENU + " (" +
+        // Membuat tabel Menu
+        String createTableMenu = "CREATE TABLE " + TABLE_MENU + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAMA_MENU + " TEXT, " +
                 COLUMN_DESKRIPSI + " TEXT, " +
                 COLUMN_FOTO + " TEXT, " +
                 COLUMN_HARGA + " REAL, " +
-                COLUMN_STOK + " INTEGER, " +
-                COLUMN_CATEGORY_ID + " INTEGER, " +
-                "FOREIGN KEY(" + COLUMN_CATEGORY_ID + ") REFERENCES " + TABLE_CATEGORY + "(" + COLUMN_ID + "))");
+                COLUMN_KATEGORI + " TEXT, " +
+                COLUMN_PROMO + " INTEGER, " +
+                COLUMN_TERSEDIA + " INTEGER, " +
+                COLUMN_LEVEL_PEDAS + " INTEGER, " +
+                COLUMN_UKURAN_MINUMAN + " TEXT, " +
+                COLUMN_TANGGAL + " TEXT)";
+        db.execSQL(createTableMenu);
 
-        // Tambahkan data default untuk Menu (Contoh Random)
-        if (!isMenuDataExists(db)) {
-            db.execSQL("INSERT INTO " + TABLE_MENU + " (" + COLUMN_NAMA_MENU + ", " + COLUMN_DESKRIPSI + ", " +
-                    COLUMN_FOTO + ", " + COLUMN_HARGA + ", " + COLUMN_STOK + ", " + COLUMN_CATEGORY_ID + ") VALUES " +
-                    "('Mie Ayam', 'Mie ayam dengan kuah lezat', 'mie_ayam.jpg', 15000, 50, 1), " +
-                    "('Es Teh Manis', 'Minuman segar es teh manis', 'es_teh_manis.jpg', 5000, 100, 2), " +
-                    "('Dimsum Ayam', 'Dimsum ayam dengan saus', 'dimsum_ayam.jpg', 20000, 30, 4), " +
-                    "('Telur Rebus', 'Telur rebus tambahan', 'telur_rebus.jpg', 3000, 20, 3)");
+//        // Create Cart Table
+//        db.execSQL("CREATE TABLE " + TABLE_CART + " (" +
+//                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+//                COLUMN_USER_ID + " INTEGER, " +
+//                COLUMN_MENU_ID + " INTEGER, " +
+//                COLUMN_JUMLAH + " INTEGER, " +
+//                COLUMN_SUBTOTAL + " REAL, " +
+//                "FOREIGN KEY(" + COLUMN_USER_ID + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + "), " +
+//                "FOREIGN KEY(" + COLUMN_MENU_ID + ") REFERENCES " + TABLE_MENU + "(" + COLUMN_ID + "))");
 
-        }
-
-        // Create Cart Table
-        db.execSQL("CREATE TABLE " + TABLE_CART + " (" +
+        // Membuat tabel Transaksi
+        String createTableTransaksi = "CREATE TABLE " + TABLE_TRANSAKSI + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_USER_ID + " INTEGER, " +
-                COLUMN_MENU_ID + " INTEGER, " +
-                COLUMN_JUMLAH + " INTEGER, " +
-                COLUMN_SUBTOTAL + " REAL, " +
-                "FOREIGN KEY(" + COLUMN_USER_ID + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + "), " +
-                "FOREIGN KEY(" + COLUMN_MENU_ID + ") REFERENCES " + TABLE_MENU + "(" + COLUMN_ID + "))");
-
-        // Create Transaksi Table
-        db.execSQL("CREATE TABLE " + TABLE_TRANSAKSI + " (" +
-                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_USER_ID + " INTEGER, " +
-                COLUMN_TANGGAL + " TEXT, " +
+                COLUMN_TANGGAL_TRANSAKSI + " TEXT, " +
                 COLUMN_TOTAL_HARGA + " REAL, " +
-                COLUMN_STATUS + " TEXT, " +
-                "FOREIGN KEY(" + COLUMN_USER_ID + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + "))");
+                COLUMN_METODE_PEMBAYARAN + " TEXT, " +
+                COLUMN_KASIR + " TEXT)";
+        db.execSQL(createTableTransaksi);
 
         // Create DetailTransaksi Table
-        db.execSQL("CREATE TABLE " + TABLE_DETAIL_TRANSAKSI + " (" +
+        // Membuat tabel Detail Transaksi
+        String createTableDetailTransaksi = "CREATE TABLE " + TABLE_DETAIL_TRANSAKSI + " (" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_TRANSAKSI_ID + " INTEGER, " +
-                COLUMN_MENU_ID + " INTEGER, " +
+                COLUMN_ID + "_transaksi INTEGER, " +
+                COLUMN_ID_MENU + " INTEGER, " +
                 COLUMN_JUMLAH + " INTEGER, " +
-                COLUMN_SUBTOTAL + " REAL, " +
-                "FOREIGN KEY(" + COLUMN_TRANSAKSI_ID + ") REFERENCES " + TABLE_TRANSAKSI + "(" + COLUMN_ID + "), " +
-                "FOREIGN KEY(" + COLUMN_MENU_ID + ") REFERENCES " + TABLE_MENU + "(" + COLUMN_ID + "))");
+                COLUMN_SUB_TOTAL + " REAL, " +
+                "FOREIGN KEY(" + COLUMN_ID + "_transaksi) REFERENCES " + TABLE_TRANSAKSI + "(" + COLUMN_ID + "), " +
+                "FOREIGN KEY(" + COLUMN_ID_MENU + ") REFERENCES " + TABLE_MENU + "(" + COLUMN_ID + "))";
+        db.execSQL(createTableDetailTransaksi);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROLE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CATEGORY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSAKSI);
@@ -184,16 +172,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return false;
     }
-    private boolean isCategoryDataExists(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_CATEGORY, null);
-        if (cursor.moveToFirst()) {
-            int count = cursor.getInt(0);
-            cursor.close();
-            return count > 0;
-        }
-        cursor.close();
-        return false;
-    }
+
     private boolean isMenuDataExists(SQLiteDatabase db) {
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_MENU, null);
         if (cursor.moveToFirst()) {
@@ -300,35 +279,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.delete(TABLE_USER, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
 
-    // CRUD for Menu
-    public long addMenu(String namaMenu, String deskripsi, String foto, double harga, int stok, int categoryId) {
+
+    // Operasi CRUD (Create, Read, Update, Delete)
+
+    // Insert Menu
+    public long insertMenu(String namaMenu, String deskripsi, String foto, double harga, String kategori,
+                           int promo, int tersedia, Integer levelPedas, String ukuranMinuman, String tanggal) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAMA_MENU, namaMenu);
         values.put(COLUMN_DESKRIPSI, deskripsi);
         values.put(COLUMN_FOTO, foto);
         values.put(COLUMN_HARGA, harga);
-        values.put(COLUMN_STOK, stok);
-        values.put(COLUMN_CATEGORY_ID, categoryId);
-        long result = db.insert(TABLE_MENU, null, values);
-        db.close();
-        return result;
+        values.put(COLUMN_KATEGORI, kategori);
+        values.put(COLUMN_PROMO, promo);
+        values.put(COLUMN_TERSEDIA, tersedia);
+        values.put(COLUMN_LEVEL_PEDAS, levelPedas);
+        values.put(COLUMN_UKURAN_MINUMAN, ukuranMinuman);
+        values.put(COLUMN_TANGGAL, tanggal);
+        return db.insert(TABLE_MENU, null, values); // Mengembalikan ID baris baru
     }
-
+    // Mengambil semua data Menu
     public Cursor getAllMenus() {
         SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_MENU, null);
+        return db.rawQuery("SELECT * FROM " + TABLE_MENU, null); // Mengembalikan Cursor
     }
 
-//    public int updateMenu(int id, String namaMenu, String deskripsi, String foto, double harga, int stok, int categoryId) {
+    // Update Menu berdasarkan ID
+//    public int updateMenu(int id, String namaMenu, String deskripsi, String foto, double harga, String kategori,
+//                          int promo, int tersedia, Integer levelPedas, String ukuranMinuman, String tanggal) {
 //        SQLiteDatabase db = this.getWritableDatabase();
 //        ContentValues values = new ContentValues();
 //        values.put(COLUMN_NAMA_MENU, namaMenu);
 //        values.put(COLUMN_DESKRIPSI, deskripsi);
 //        values.put(COLUMN_FOTO, foto);
 //        values.put(COLUMN_HARGA, harga);
-//        values.put(COLUMN_STOK, stok);
-//        values.put(COLUMN_CATEGORY_ID, categoryId);
+//        values.put(COLUMN_KATEGORI, kategori);
+//        values.put(COLUMN_PROMO, promo);
+//        values.put(COLUMN_TERSEDIA, tersedia);
+//        values.put(COLUMN_LEVEL_PEDAS, levelPedas);
+//        values.put(COLUMN_UKURAN_MINUMAN, ukuranMinuman);
+//        values.put(COLUMN_TANGGAL, tanggal);
 //        return db.update(TABLE_MENU, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
 //    }
 
@@ -337,14 +328,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.update(TABLE_MENU, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
 
+    // Hapus Menu berdasarkan ID
     public int deleteMenu(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.delete(TABLE_MENU, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
-    }
-
-    public Cursor getAllCategories() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_CATEGORY, null);
     }
 
     public Cursor getMenuById(int id) {
@@ -352,40 +339,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_MENU + " WHERE " + COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
 
+    // Insert Transaksi
+    public long insertTransaksi(String tanggalTransaksi, double totalHarga, String metodePembayaran, String kasir) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_TANGGAL_TRANSAKSI, tanggalTransaksi);
+        values.put(COLUMN_TOTAL_HARGA, totalHarga);
+        values.put(COLUMN_METODE_PEMBAYARAN, metodePembayaran);
+        values.put(COLUMN_KASIR, kasir);
+        return db.insert(TABLE_TRANSAKSI, null, values);
+    }
+
+    // Insert Detail Transaksi
+    public long insertDetailTransaksi(int idTransaksi, int idMenu, int jumlah, double subTotal) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_ID + "_transaksi", idTransaksi);
+        values.put(COLUMN_ID_MENU, idMenu);
+        values.put(COLUMN_JUMLAH, jumlah);
+        values.put(COLUMN_SUB_TOTAL, subTotal);
+        return db.insert(TABLE_DETAIL_TRANSAKSI, null, values);
+    }
+
+    // Mengambil semua data Transaksi
+    public Cursor getAllTransaksi() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_TRANSAKSI, null);
+    }
+
 
     // CRUD for Cart
-    public long addToCart(int userId, int menuId, int jumlah, double subtotal) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_USER_ID, userId);
-        values.put(COLUMN_MENU_ID, menuId);
-        values.put(COLUMN_JUMLAH, jumlah);
-        values.put(COLUMN_SUBTOTAL, subtotal);
-        long result = db.insert(TABLE_CART, null, values);
-        db.close();
-        return result;
-    }
-
-    public Cursor getCartItems(int userId) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TABLE_CART + " WHERE " + COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
-    }
-
-    public int updateCartItem(int id, int jumlah, double subtotal) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_JUMLAH, jumlah);
-        values.put(COLUMN_SUBTOTAL, subtotal);
-        return db.update(TABLE_CART, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
-    }
-
-    public int deleteCartItem(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_CART, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
-    }
-
-    public int clearCart(int userId) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        return db.delete(TABLE_CART, COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
-    }
+//    public long addToCart(int userId, int menuId, int jumlah, double subtotal) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COLUMN_USER_ID, userId);
+//        values.put(COLUMN_MENU_ID, menuId);
+//        values.put(COLUMN_JUMLAH, jumlah);
+//        values.put(COLUMN_SUBTOTAL, subtotal);
+//        long result = db.insert(TABLE_CART, null, values);
+//        db.close();
+//        return result;
+//    }
+//
+//    public Cursor getCartItems(int userId) {
+//        SQLiteDatabase db = this.getReadableDatabase();
+//        return db.rawQuery("SELECT * FROM " + TABLE_CART + " WHERE " + COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
+//    }
+//
+//    public int updateCartItem(int id, int jumlah, double subtotal) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COLUMN_JUMLAH, jumlah);
+//        values.put(COLUMN_SUBTOTAL, subtotal);
+//        return db.update(TABLE_CART, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+//    }
+//
+//    public int deleteCartItem(int id) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        return db.delete(TABLE_CART, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
+//    }
+//
+//    public int clearCart(int userId) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        return db.delete(TABLE_CART, COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
+//    }
 }

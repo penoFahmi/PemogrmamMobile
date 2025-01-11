@@ -22,10 +22,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
     private Context context;
     private List<MenuModel> menuList;
+    private OnMenuClickListener onMenuClickListener;
 
-    public MenuAdapter(Context context, List<MenuModel> menuList) {
+    public interface OnMenuClickListener {
+        void onMenuClick(MenuModel menu);
+    }
+
+    public MenuAdapter(Context context, List<MenuModel> menuList, OnMenuClickListener onMenuClickListener) {
         this.context = context;
         this.menuList = menuList;
+        this.onMenuClickListener = onMenuClickListener;
     }
 
     @NonNull
@@ -39,16 +45,31 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     public void onBindViewHolder(@NonNull MenuViewHolder holder, int position) {
         MenuModel menu = menuList.get(position);
 
-        holder.tvNamaMenu.setText(menu.getNamaMenu());
-        holder.tvHarga.setText("Rp " + menu.getHarga());
+        // Validasi data sebelum di-set
+        holder.tvNamaMenu.setText(menu.getNamaMenu() != null ? menu.getNamaMenu() : "Tidak ada nama");
+        holder.tvHarga.setText(menu.getHarga() > 0 ? "Rp " + menu.getHarga() : "Harga tidak tersedia");
+        holder.tvKategori.setText(menu.getKategori() != null ? menu.getKategori() : "Kategori tidak tersedia");
+        holder.tvTanggal.setText(menu.getTanggal() != null ? "Tanggal: " + menu.getTanggal() : "Tanggal tidak tersedia");
 
-        Glide.with(context).load(menu.getFoto()).into(holder.imgMenu);
+        // Load gambar dengan Glide dan placeholder
+        Glide.with(context)
+                .load(menu.getFotoUrl() != null ? menu.getFotoUrl() : R.drawable.miemangkok)
+                .placeholder(R.drawable.miemangkok)
+                .error(R.drawable.miemangkok) // Default jika URL salah
+                .into(holder.imgMenu);
 
+        // Set klik item
+//        holder.itemView.setOnClickListener(v -> {
+//            if (onMenuClickListener != null) {
+//                onMenuClickListener.onMenuClick(menu);
+//            }
+//        });
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, MenuDetailActivity.class);
             intent.putExtra("menu_id", menu.getId());
             context.startActivity(intent);
         });
+
     }
 
     @Override
@@ -57,13 +78,16 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
     }
 
     public static class MenuViewHolder extends RecyclerView.ViewHolder {
-        TextView tvNamaMenu, tvHarga;
+        TextView tvNamaMenu, tvHarga, tvKategori, tvTanggal;
         ImageView imgMenu;
 
         public MenuViewHolder(@NonNull View itemView) {
             super(itemView);
+
             tvNamaMenu = itemView.findViewById(R.id.tv_nama_menu);
             tvHarga = itemView.findViewById(R.id.tv_harga);
+            tvKategori = itemView.findViewById(R.id.tv_kategori);
+            tvTanggal = itemView.findViewById(R.id.tv_tanggal);
             imgMenu = itemView.findViewById(R.id.img_menu);
         }
     }

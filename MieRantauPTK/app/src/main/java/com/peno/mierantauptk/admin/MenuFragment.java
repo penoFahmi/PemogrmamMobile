@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.peno.mierantauptk.R;
 import com.peno.mierantauptk.adapters.MenuAdapter;
+import com.peno.mierantauptk.admin.crud.EditMenuActivity;
 import com.peno.mierantauptk.admin.crud.TambahMenuActivity;
 import com.peno.mierantauptk.database.DatabaseHelper;
 import com.peno.mierantauptk.models.MenuModel;
@@ -39,7 +40,11 @@ public class MenuFragment extends Fragment {
         databaseHelper = new DatabaseHelper(getContext());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new MenuAdapter(getContext(), menuList);
+        adapter = new MenuAdapter(getContext(), menuList, menu -> {
+            Intent intent = new Intent(getContext(), EditMenuActivity.class);
+            intent.putExtra("menuId", menu.getId());
+            startActivity(intent);
+        });
         recyclerView.setAdapter(adapter);
 
         loadMenuData();
@@ -55,18 +60,26 @@ public class MenuFragment extends Fragment {
     private void loadMenuData() {
         Cursor cursor = databaseHelper.getAllMenus();
         menuList.clear();
+
         if (cursor.moveToFirst()) {
             do {
                 int id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID));
                 String namaMenu = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_NAMA_MENU));
                 String deskripsi = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_DESKRIPSI));
                 double harga = cursor.getDouble(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_HARGA));
-                int stok = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_STOK));
+                String kategori = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_KATEGORI));
                 String fotoUrl = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_FOTO));
+                int promo = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PROMO));
+                int tersedia = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_TERSEDIA));
+                int levelPedas = cursor.isNull(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_LEVEL_PEDAS))
+                        ? -1 : cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_LEVEL_PEDAS));
+                String ukuranMinuman = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_UKURAN_MINUMAN));
+                String tanggal = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_TANGGAL));
 
-                menuList.add(new MenuModel(id, namaMenu, deskripsi, fotoUrl, harga, stok));
+                menuList.add(new MenuModel(id, namaMenu, deskripsi, fotoUrl, harga, kategori, promo, tersedia, levelPedas, ukuranMinuman, tanggal));
             } while (cursor.moveToNext());
         }
+
         cursor.close();
         adapter.notifyDataSetChanged();
     }

@@ -5,15 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".admin.MenuDetailActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <!-- Gambar Menu -->
         <ImageView
             android:id="@+id/img_menu_detail"
             android:layout_width="match_parent"
@@ -21,6 +21,7 @@
             android:scaleType="centerCrop"
             android:layout_marginBottom="16dp" />
 
+        <!-- Nama Menu -->
         <TextView
             android:id="@+id/tv_menu_name"
             android:layout_width="match_parent"
@@ -30,42 +31,79 @@
             android:textStyle="bold"
             android:layout_marginBottom="8dp" />
 
+        <!-- Deskripsi -->
         <TextView
             android:id="@+id/tv_menu_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Deskripsi"
-            android:textSize="16sp"
             android:layout_marginBottom="8dp" />
 
+        <!-- Harga -->
         <TextView
             android:id="@+id/tv_menu_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Harga"
-            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Kategori -->
+        <TextView
+            android:id="@+id/tv_menu_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kategori"
             android:layout_marginBottom="8dp" />
 
         <TextView
-            android:id="@+id/tv_menu_stock"
+            android:id="@+id/tv_promo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Stok"
-            android:textSize="16sp"
+            android:text="Promo"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_availability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ketersediaan"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_spicy_level"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Level Pedas"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_drink_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ukuran Minuman"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tv_menu_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanggal Ditambahkan"
             android:layout_marginBottom="16dp" />
 
+        <!-- Tombol Edit -->
         <Button
             android:id="@+id/btn_edit_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit"
+            android:text="Edit Menu"
             android:layout_marginBottom="8dp" />
 
+        <!-- Tombol Hapus -->
         <Button
             android:id="@+id/btn_delete_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hapus"
+            android:text="Hapus Menu"
             android:backgroundTint="@android:color/holo_red_dark"
             android:textColor="@android:color/white" />
     </LinearLayout>
