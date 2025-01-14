@@ -33,7 +33,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 //                    selectedFragment = new MenuFragment();
 //                    break;
 //                case R.id.navigation_orders:
-//                    selectedFragment = new OrdersFragment();
+//                    selectedFragment = new KasirFragment();
 //                    break;
 //                case R.id.navigation_users:
 //                    selectedFragment = new UsersFragment();
@@ -61,9 +61,11 @@ public class AdminDashboardActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.navigation_menu) {
                 selectedFragment = new MenuFragment();
             } else if (item.getItemId() == R.id.navigation_orders) {
-                selectedFragment = new OrdersFragment();
-            } else if (item.getItemId() == R.id.navigation_users) {
-                selectedFragment = new UsersFragment();
+                selectedFragment = new KasirFragment();
+//            } else if (item.getItemId() == R.id.navigation_users) {
+//                selectedFragment = new UsersFragment();
+            } else if (item.getItemId() == R.id.navigation_riwayat) {
+                selectedFragment = new RiwayatFragment();
             } else if (item.getItemId() == R.id.navigation_profile) {
                 selectedFragment = new ProfileFragment();
             }

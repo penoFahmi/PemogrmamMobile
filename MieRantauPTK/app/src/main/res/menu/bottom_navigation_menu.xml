@@ -11,11 +11,15 @@
     <item
         android:id="@+id/navigation_orders"
         android:icon="@drawable/ic_orders"
-        android:title="Pemesanan" />
+        android:title="Kasir" />
+<!--    <item-->
+<!--        android:id="@+id/navigation_users"-->
+<!--        android:icon="@drawable/ic_users"-->
+<!--        android:title="Data User" />-->
     <item
-        android:id="@+id/navigation_users"
+        android:id="@+id/navigation_riwayat"
         android:icon="@drawable/ic_users"
-        android:title="Data User" />
+        android:title="Riwayat" />
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile"

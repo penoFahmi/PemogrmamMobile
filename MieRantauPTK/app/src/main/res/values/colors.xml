@@ -9,4 +9,29 @@
     <!-- Tambahan jika diperlukan -->
     <color name="colorSecondary">#C0392B</color> <!-- Merah lembut -->
     <color name="colorSecondaryDark">#922B21</color> <!-- Merah gelap -->
+
+    <!-- Warna untuk Teks -->
+    <color name="whiteTextColor">#FFFFFF</color>
+    <color name="primaryTextColor">#FF5722</color>
+    <color name="loginBkColor">#FFF3E0</color>
+
+    <!-- Warna untuk Kartu -->
+    <color name="whiteCardColor">#FFFFFF</color>
+    <color name="orange_yellow">#FFB74D</color>
+    <color name="productCard">#FF7043</color>
+    <color name="toolbarIconColor">#FFFFFF</color>
+    <color name="loginPageBackgroundColor">#FFF3E0</color>
+    <color name="productGridBackgroundColor">#FFF8E1</color>
+
+
+    <!-- Warna Latar Belakang -->
+    <color name="backgroundColor">#FFEB3B</color>
+    <color name="primaryColor">#FFA000</color>
+    <color name="textPrimary">#3E2723</color>
+    <color name="textSecondary">#795548</color>
+    <color name="bgMain">#FFFDE7</color>
+
+    <!-- warna tombol   -->
+    <color name="btnDangar">#FF0000</color>
+    <color name="btnPrimary">#03A9F4</color>
 </resources>

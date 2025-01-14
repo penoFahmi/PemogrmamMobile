@@ -1,6 +1,5 @@
 package com.peno.mierantauptk.admin;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.cardview.widget.CardView;
@@ -16,7 +15,7 @@ import com.peno.mierantauptk.R;
 
 public class HomeFragment extends Fragment {
 
-    CardView KelolaMenuCard, penjualanCard, userCard;
+    CardView KelolaMenuCard, penjualanCard, riwayatCard;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -27,7 +26,7 @@ public class HomeFragment extends Fragment {
         // Initialize the CardView
         KelolaMenuCard = view.findViewById(R.id.KelolaMenuCard);
         penjualanCard = view.findViewById(R.id.penjualanCard);
-        userCard = view.findViewById(R.id.userCard);
+        riwayatCard = view.findViewById(R.id.riwayatCard);
 
         // Set onClickListener
 //        KelolaMenuCard.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +41,7 @@ public class HomeFragment extends Fragment {
 //            @Override
 //            public void onClick(View v) {
 //                // Open PenjualanFragment
-//                Intent intent = new Intent(getActivity(), OrdersFragment.class);
+//                Intent intent = new Intent(getActivity(), KasirFragment.class);
 //                startActivity(intent);
 //            }
 //        });
@@ -65,16 +64,16 @@ public class HomeFragment extends Fragment {
         penjualanCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Replace with OrdersFragment
-                replaceFragment(new OrdersFragment());
+                // Replace with KasirFragment
+                replaceFragment(new KasirFragment());
             }
         });
 
-        userCard.setOnClickListener(new View.OnClickListener() {
+        riwayatCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Replace with UsersFragment
-                replaceFragment(new UsersFragment());
+                replaceFragment(new RiwayatFragment());
             }
         });
         return view;

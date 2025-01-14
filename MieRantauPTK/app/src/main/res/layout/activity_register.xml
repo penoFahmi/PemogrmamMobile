@@ -1,119 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
+    android:orientation="vertical"
+    style="@style/loginParent"
     tools:context=".RegisterActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewRegister"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="6dp"
-        app:cardBackgroundColor="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+    <ScrollView
+        style="@style/loginParent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
+        <RelativeLayout style="@style/parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:textSize="28sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginBottom="24dp"
-                android:fontFamily="sans-serif-medium" />
+            <LinearLayout
+                style="@style/parent"
+                android:layout_weight="3"
+                android:background="@drawable/login_shape_bk"
+                android:orientation="vertical">
 
-            <!-- Nama -->
-            <EditText
-                android:id="@+id/etRegisterName"
+                <LinearLayout
+                    style="@style/parent"
+                    android:layout_weight="3"
+                    android:background="@drawable/login_shape_bk"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/parent"
+                        android:background="@drawable/ic_login_bk"
+                        android:contentDescription="register bg" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Name"
-                android:inputType="text"
-                android:layout_marginBottom="12dp"
-                android:padding="16dp"
-                android:background="@drawable/rounded_edittext" />
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginRight="30dp"
+                android:orientation="vertical">
 
-            <!-- Email -->
-            <EditText
-                android:id="@+id/etRegisterEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:layout_marginBottom="12dp"
-                android:padding="16dp"
-                android:background="@drawable/rounded_edittext" />
+                <TextView
+                    style="@style/headerText"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dp"
+                    android:text="Mie Rantau" />
 
-            <!-- No Telepon -->
-            <EditText
-                android:id="@+id/etRegisterPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Phone Number"
-                android:inputType="phone"
-                android:layout_marginBottom="12dp"
-                android:padding="16dp"
-                android:background="@drawable/rounded_edittext" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp"
+                    android:elevation="5dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@color/white">
 
-            <!-- Password -->
-            <EditText
-                android:id="@+id/etRegisterPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:layout_marginBottom="12dp"
-                android:padding="16dp"
-                android:background="@drawable/rounded_edittext" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-            <!-- Confirm Password -->
-            <EditText
-                android:id="@+id/etRegisterConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Confirm Password"
-                android:inputType="textPassword"
-                android:layout_marginBottom="24dp"
-                android:padding="16dp"
-                android:background="@drawable/rounded_edittext" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="24dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="Register"
+                            android:textColor="@color/black"
+                            android:textSize="28sp"
+                            android:textStyle="bold" />
 
-            <!-- Register Button -->
-            <Button
-                android:id="@+id/btnRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="@android:color/white"
-                android:background="@color/colorPrimary"
-                android:padding="16dp" />
+                        <!-- Nama -->
+                        <EditText
+                            android:id="@+id/etRegisterName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="Name"
+                            android:inputType="text"
+                            android:padding="16dp" />
 
-            <!-- Login Link -->
-            <TextView
-                android:id="@+id/tvBackLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Already have an account? Login"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="14sp"
-                android:layout_marginTop="16dp"
-                android:gravity="center" />
+                        <!-- Email -->
+                        <EditText
+                            android:id="@+id/etRegisterEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="Email"
+                            android:inputType="textEmailAddress"
+                            android:padding="16dp" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                        <!-- No Telepon -->
+                        <EditText
+                            android:id="@+id/etRegisterPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="Phone Number"
+                            android:inputType="phone"
+                            android:padding="16dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                        <!-- Password -->
+                        <EditText
+                            android:id="@+id/etRegisterPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="Password"
+                            android:inputType="textPassword"
+                            android:padding="16dp" />
+
+                        <!-- Confirm Password -->
+                        <EditText
+                            android:id="@+id/etRegisterConfirmPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="24dp"
+                            android:background="@drawable/rounded_edittext"
+                            android:hint="Confirm Password"
+                            android:inputType="textPassword"
+                            android:padding="16dp" />
+
+                        <!-- Register Button -->
+                        <Button
+                            android:id="@+id/btnRegister"
+                            android:backgroundTint="@color/primaryColor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Register"
+                            android:textColor="@color/white"/>
+                        <!-- Login Link -->
+                        <TextView
+                            android:id="@+id/tvBackLogin"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:gravity="center"
+                            android:text="Already have an account? Login"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>

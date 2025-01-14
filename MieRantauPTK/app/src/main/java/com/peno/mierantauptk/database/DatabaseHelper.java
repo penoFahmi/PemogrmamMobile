@@ -64,7 +64,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID_MENU = "id_menu";
     public static final String COLUMN_JUMLAH = "jumlah";
     public static final String COLUMN_SUB_TOTAL = "sub_total";
-
+    public static final String COLUMN_CATATAN = "catatan";
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -144,6 +144,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_ID_MENU + " INTEGER, " +
                 COLUMN_JUMLAH + " INTEGER, " +
                 COLUMN_SUB_TOTAL + " REAL, " +
+                COLUMN_CATATAN + " TEXT, " +
                 "FOREIGN KEY(" + COLUMN_ID + "_transaksi) REFERENCES " + TABLE_TRANSAKSI + "(" + COLUMN_ID + "), " +
                 "FOREIGN KEY(" + COLUMN_ID_MENU + ") REFERENCES " + TABLE_MENU + "(" + COLUMN_ID + "))";
         db.execSQL(createTableDetailTransaksi);
@@ -305,6 +306,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_MENU, null); // Mengembalikan Cursor
     }
 
+    public Cursor getMenusByCategory(String category) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query;
+        if (category.equalsIgnoreCase("Semua")) {
+            query = "SELECT * FROM " + TABLE_MENU;
+        } else {
+            query = "SELECT * FROM " + TABLE_MENU + " WHERE " + COLUMN_KATEGORI + " = ?";
+        }
+        return db.rawQuery(query, category.equalsIgnoreCase("Semua") ? null : new String[]{category});
+    }
+
+    public Cursor searchMenus(String query) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String searchQuery = "SELECT * FROM " + TABLE_MENU + " WHERE " + COLUMN_NAMA_MENU + " LIKE ?";
+        return db.rawQuery(searchQuery, new String[]{"%" + query + "%"});
+    }
+
+
     // Update Menu berdasarkan ID
 //    public int updateMenu(int id, String namaMenu, String deskripsi, String foto, double harga, String kategori,
 //                          int promo, int tersedia, Integer levelPedas, String ukuranMinuman, String tanggal) {
@@ -351,13 +370,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Insert Detail Transaksi
-    public long insertDetailTransaksi(int idTransaksi, int idMenu, int jumlah, double subTotal) {
+    public long insertDetailTransaksi(int idTransaksi, int idMenu, int jumlah, double subTotal, String catatan) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_ID + "_transaksi", idTransaksi);
         values.put(COLUMN_ID_MENU, idMenu);
         values.put(COLUMN_JUMLAH, jumlah);
         values.put(COLUMN_SUB_TOTAL, subTotal);
+        values.put(COLUMN_CATATAN, catatan);
         return db.insert(TABLE_DETAIL_TRANSAKSI, null, values);
     }
 
@@ -365,6 +385,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor getAllTransaksi() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TABLE_TRANSAKSI, null);
+    }
+
+    public Cursor getDetailTransaksiById(int idTransaksi) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM " + TABLE_DETAIL_TRANSAKSI + " WHERE " + COLUMN_ID + "_transaksi=?";
+        return db.rawQuery(query, new String[]{String.valueOf(idTransaksi)});
     }
 
 

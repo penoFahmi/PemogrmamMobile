@@ -28,13 +28,13 @@
             android:name=".users.UserDashboardActivity"
             android:exported="false" />
         <activity
-            android:name=".admin.AdminDashboardActivity"
-            android:exported="false" />
-        <activity
             android:name=".RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".admin.AdminDashboardActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
