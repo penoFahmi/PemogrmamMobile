@@ -83,12 +83,22 @@
             android:text="Ukuran Minuman"
             android:layout_marginBottom="8dp" />
 
+        <!-- Tanggal Promo -->
         <TextView
-            android:id="@+id/tv_menu_date"
+            android:id="@+id/tv_promo_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tanggal Ditambahkan"
-            android:layout_marginBottom="16dp" />
+            android:text="Promo Berakhir pada:"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Waktu Tersedia -->
+        <TextView
+            android:id="@+id/tv_available_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Waktu Tersedia:"
+            android:layout_marginBottom="8dp" />
+
 
         <!-- Tombol Edit -->
         <Button

@@ -15,7 +15,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_ROLE = "Role";
     public static final String TABLE_USER = "User";
     public static final String TABLE_MENU = "Menu";
-    public static final String TABLE_CART = "Cart";
     public static final String TABLE_TRANSAKSI = "Transaksi";
     public static final String TABLE_DETAIL_TRANSAKSI = "DetailTransaksi";
 
@@ -45,12 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_LEVEL_PEDAS = "level_pedas";
     public static final String COLUMN_UKURAN_MINUMAN = "ukuran_minuman";
     public static final String COLUMN_TANGGAL = "tanggal";
-
-//    // Cart Table Columns
-//    public static final String COLUMN_USER_ID = "user_id";
-//    public static final String COLUMN_MENU_ID = "menu_id";
-//    public static final String COLUMN_JUMLAH = "jumlah";
-//    public static final String COLUMN_SUBTOTAL = "subtotal";
+    public static final String COLUMN_WAKTU = "waktu";
 
     // Tabel: Transaksi
     public static final String COLUMN_TANGGAL_TRANSAKSI = "tanggal_transaksi";
@@ -65,6 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_JUMLAH = "jumlah";
     public static final String COLUMN_SUB_TOTAL = "sub_total";
     public static final String COLUMN_CATATAN = "catatan";
+
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -114,18 +109,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TERSEDIA + " INTEGER, " +
                 COLUMN_LEVEL_PEDAS + " INTEGER, " +
                 COLUMN_UKURAN_MINUMAN + " TEXT, " +
-                COLUMN_TANGGAL + " TEXT)";
+                COLUMN_TANGGAL + " TEXT, " +
+                COLUMN_WAKTU + " TEXT) ";
         db.execSQL(createTableMenu);
-
-//        // Create Cart Table
-//        db.execSQL("CREATE TABLE " + TABLE_CART + " (" +
-//                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-//                COLUMN_USER_ID + " INTEGER, " +
-//                COLUMN_MENU_ID + " INTEGER, " +
-//                COLUMN_JUMLAH + " INTEGER, " +
-//                COLUMN_SUBTOTAL + " REAL, " +
-//                "FOREIGN KEY(" + COLUMN_USER_ID + ") REFERENCES " + TABLE_USER + "(" + COLUMN_ID + "), " +
-//                "FOREIGN KEY(" + COLUMN_MENU_ID + ") REFERENCES " + TABLE_MENU + "(" + COLUMN_ID + "))");
 
         // Membuat tabel Transaksi
         String createTableTransaksi = "CREATE TABLE " + TABLE_TRANSAKSI + " (" +
@@ -156,7 +142,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROLE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MENU);
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CART);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSAKSI);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DETAIL_TRANSAKSI);
         onCreate(db);
@@ -184,6 +169,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return false;
     }
+
     private boolean isAdminDataExists(SQLiteDatabase db) {
         Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_USER + " WHERE " + COLUMN_ROLE_ID + "=1", null);
         if (cursor.moveToFirst()) {
@@ -246,24 +232,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
 
-//    // Add Role
-//    public long addRole(String roleName, String description) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLUMN_ROLE_NAME, roleName);
-//        values.put(COLUMN_DESCRIPTION, description);
-//
-//        long result = db.insert(TABLE_ROLE, null, values);
-//        db.close();
-//        return result;
-//    }
-//
-//    // Get All Roles
-//    public Cursor getAllRoles() {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        return db.rawQuery("SELECT * FROM " + TABLE_ROLE, null);
-//    }
-
     public int updateUser(int id, String nama, String email, String noTelp, String password, int roleId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -281,7 +249,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    // Operasi CRUD (Create, Read, Update, Delete)
+
 
     // Insert Menu
     public long insertMenu(String namaMenu, String deskripsi, String foto, double harga, String kategori,
@@ -300,6 +268,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(COLUMN_TANGGAL, tanggal);
         return db.insert(TABLE_MENU, null, values); // Mengembalikan ID baris baru
     }
+
     // Mengambil semua data Menu
     public Cursor getAllMenus() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -324,28 +293,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    // Update Menu berdasarkan ID
-//    public int updateMenu(int id, String namaMenu, String deskripsi, String foto, double harga, String kategori,
-//                          int promo, int tersedia, Integer levelPedas, String ukuranMinuman, String tanggal) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLUMN_NAMA_MENU, namaMenu);
-//        values.put(COLUMN_DESKRIPSI, deskripsi);
-//        values.put(COLUMN_FOTO, foto);
-//        values.put(COLUMN_HARGA, harga);
-//        values.put(COLUMN_KATEGORI, kategori);
-//        values.put(COLUMN_PROMO, promo);
-//        values.put(COLUMN_TERSEDIA, tersedia);
-//        values.put(COLUMN_LEVEL_PEDAS, levelPedas);
-//        values.put(COLUMN_UKURAN_MINUMAN, ukuranMinuman);
-//        values.put(COLUMN_TANGGAL, tanggal);
-//        return db.update(TABLE_MENU, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
-//    }
-
     public int updateMenu(int id, ContentValues values) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.update(TABLE_MENU, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
     }
+
 
     // Hapus Menu berdasarkan ID
     public int deleteMenu(int id) {
@@ -392,41 +344,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_DETAIL_TRANSAKSI + " WHERE " + COLUMN_ID + "_transaksi=?";
         return db.rawQuery(query, new String[]{String.valueOf(idTransaksi)});
     }
-
-
-    // CRUD for Cart
-//    public long addToCart(int userId, int menuId, int jumlah, double subtotal) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLUMN_USER_ID, userId);
-//        values.put(COLUMN_MENU_ID, menuId);
-//        values.put(COLUMN_JUMLAH, jumlah);
-//        values.put(COLUMN_SUBTOTAL, subtotal);
-//        long result = db.insert(TABLE_CART, null, values);
-//        db.close();
-//        return result;
-//    }
-//
-//    public Cursor getCartItems(int userId) {
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        return db.rawQuery("SELECT * FROM " + TABLE_CART + " WHERE " + COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
-//    }
-//
-//    public int updateCartItem(int id, int jumlah, double subtotal) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        ContentValues values = new ContentValues();
-//        values.put(COLUMN_JUMLAH, jumlah);
-//        values.put(COLUMN_SUBTOTAL, subtotal);
-//        return db.update(TABLE_CART, values, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
-//    }
-//
-//    public int deleteCartItem(int id) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        return db.delete(TABLE_CART, COLUMN_ID + "=?", new String[]{String.valueOf(id)});
-//    }
-//
-//    public int clearCart(int userId) {
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        return db.delete(TABLE_CART, COLUMN_USER_ID + "=?", new String[]{String.valueOf(userId)});
-//    }
 }

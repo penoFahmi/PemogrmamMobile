@@ -25,15 +25,20 @@ import java.util.Locale;
 
 public class TambahMenuActivity extends AppCompatActivity {
 
-    private EditText etNamaMenu, etDeskripsi, etHarga, etTanggal;
+    private EditText etNamaMenu, etDeskripsi, etHarga;
     private CheckBox cbPromo, cbTersedia;
     private RadioGroup rgCategory;
-    private LinearLayout layoutCheckboxes;
-    private Button btnSelectImage, btnSimpan;
+    private LinearLayout layoutCheckboxes, layoutPromoDate, layoutAvailableTime;
+    private Button btnSelectImage, btnSimpan, btnSelectPromoDate, btnSelectAvailableTime;
     private ImageView imgPreview;
+    private TimePicker timePickerStart, timePickerEnd;
 
     private Bitmap selectedImageBitmap = null;
     private String selectedCategory = null;
+    private String promoDate = null;
+    private String availableStartTime = null;
+    private String availableEndTime = null;
+
     private DatabaseHelper databaseHelper;
 
     @Override
@@ -45,11 +50,15 @@ public class TambahMenuActivity extends AppCompatActivity {
         etNamaMenu = findViewById(R.id.et_nama_menu);
         etDeskripsi = findViewById(R.id.et_deskripsi);
         etHarga = findViewById(R.id.et_harga);
-        etTanggal = findViewById(R.id.et_tanggal);
         cbPromo = findViewById(R.id.cb_promo);
         cbTersedia = findViewById(R.id.cb_tersedia);
         rgCategory = findViewById(R.id.rg_category);
         layoutCheckboxes = findViewById(R.id.layout_checkboxes);
+        layoutPromoDate = findViewById(R.id.layout_promo_date);
+        layoutAvailableTime = findViewById(R.id.layout_available_time);
+        btnSelectPromoDate = findViewById(R.id.btn_select_promo_date);
+        timePickerStart = findViewById(R.id.time_picker_start);
+        timePickerEnd = findViewById(R.id.time_picker_end);
         btnSelectImage = findViewById(R.id.btn_select_image);
         imgPreview = findViewById(R.id.img_preview);
         btnSimpan = findViewById(R.id.btn_simpan);
@@ -65,8 +74,27 @@ public class TambahMenuActivity extends AppCompatActivity {
         // Tampilkan kategori statis
         loadCategories();
 
-        // Tampilkan DatePicker saat memilih tanggal
-        etTanggal.setOnClickListener(v -> showDatePicker());
+        // Toggle untuk promo
+        cbPromo.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            layoutPromoDate.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+        });
+
+        // Toggle untuk tersedia
+        cbTersedia.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            layoutAvailableTime.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+        });
+
+        // Pilih Tanggal Promo
+        btnSelectPromoDate.setOnClickListener(v -> showPromoDatePicker());
+
+        // Time Pickers untuk ketersediaan
+        timePickerStart.setOnTimeChangedListener((view, hourOfDay, minute) -> {
+            availableStartTime = hourOfDay + ":" + minute;
+        });
+
+        timePickerEnd.setOnTimeChangedListener((view, hourOfDay, minute) -> {
+            availableEndTime = hourOfDay + ":" + minute;
+        });
     }
 
     private void openImagePicker() {
@@ -121,13 +149,14 @@ public class TambahMenuActivity extends AppCompatActivity {
         }
     }
 
-    private void showDatePicker() {
+    private void showPromoDatePicker() {
         Calendar calendar = Calendar.getInstance();
         new DatePickerDialog(this, (view, year, month, dayOfMonth) -> {
-            String formattedDate = year + "-" + (month + 1) + "-" + dayOfMonth;
-            etTanggal.setText(formattedDate);
+            promoDate = year + "-" + (month + 1) + "-" + dayOfMonth;
+            btnSelectPromoDate.setText(promoDate);
         }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
     }
+
 
     private String getSelectedCheckboxValues() {
         StringBuilder selectedValues = new StringBuilder();
@@ -164,19 +193,11 @@ public class TambahMenuActivity extends AppCompatActivity {
         String namaMenu = etNamaMenu.getText().toString().trim();
         String deskripsi = etDeskripsi.getText().toString().trim();
         String hargaStr = etHarga.getText().toString().trim();
-        String tanggal = etTanggal.getText().toString().trim();
         boolean promo = cbPromo.isChecked();
         boolean tersedia = cbTersedia.isChecked();
 
-        if (namaMenu.isEmpty() || deskripsi.isEmpty() || hargaStr.isEmpty() || tanggal.isEmpty() || selectedCategory == null) {
+        if (namaMenu.isEmpty() || deskripsi.isEmpty() || hargaStr.isEmpty() || selectedCategory == null) {
             Toast.makeText(this, "Semua field harus diisi!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        try {
-            new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(tanggal);
-        } catch (ParseException e) {
-            Toast.makeText(this, "Format tanggal tidak valid!", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -194,9 +215,10 @@ public class TambahMenuActivity extends AppCompatActivity {
         values.put(DatabaseHelper.COLUMN_HARGA, harga);
         values.put(DatabaseHelper.COLUMN_KATEGORI, selectedCategory);
         values.put(DatabaseHelper.COLUMN_PROMO, promo ? 1 : 0);
+        values.put(DatabaseHelper.COLUMN_TANGGAL, promo ? promoDate : null);
         values.put(DatabaseHelper.COLUMN_TERSEDIA, tersedia ? 1 : 0);
+        values.put(DatabaseHelper.COLUMN_WAKTU, tersedia ? availableStartTime + " - " + availableEndTime : null);
         values.put(DatabaseHelper.COLUMN_FOTO, imagePath);
-        values.put(DatabaseHelper.COLUMN_TANGGAL, tanggal);
         values.put(DatabaseHelper.COLUMN_LEVEL_PEDAS, "Mie".equalsIgnoreCase(selectedCategory) ? additionalInfo : null);
         values.put(DatabaseHelper.COLUMN_UKURAN_MINUMAN, "Minuman".equalsIgnoreCase(selectedCategory) ? additionalInfo : null);
 

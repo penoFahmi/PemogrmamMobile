@@ -51,15 +51,6 @@
             android:inputType="numberDecimal"
             android:layout_marginTop="8dp" />
 
-        <!-- Tanggal -->
-        <EditText
-            android:id="@+id/et_tanggal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Tanggal (YYYY-MM-DD)"
-            android:focusable="false"
-            android:layout_marginTop="8dp" />
-
         <!-- Pilihan Kategori -->
         <TextView
             android:layout_width="match_parent"
@@ -107,6 +98,62 @@
                 android:layout_height="wrap_content"
                 android:text="Tersedia"
                 android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <!-- Tanggal Promo -->
+        <LinearLayout
+            android:id="@+id/layout_promo_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Promo sampai tanggal:"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btn_select_promo_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tanggal" />
+        </LinearLayout>
+
+        <!-- Waktu Tersedia -->
+        <LinearLayout
+            android:id="@+id/layout_available_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tersedia dari jam:"
+                android:layout_marginBottom="4dp" />
+
+            <TimePicker
+                android:id="@+id/time_picker_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sampai jam:"
+                android:layout_marginTop="4dp" />
+
+            <TimePicker
+                android:id="@+id/time_picker_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:timePickerMode="spinner" />
         </LinearLayout>
 
         <!-- Pilih Gambar -->

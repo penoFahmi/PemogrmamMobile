@@ -19,8 +19,10 @@ public class MenuDetailActivity extends AppCompatActivity {
 
     private ImageView imgMenuDetail;
     private TextView tvMenuName, tvMenuDescription, tvMenuPrice, tvMenuCategory;
-    private TextView tvPromo, tvAvailability, tvSpicyLevel, tvDrinkSize, tvMenuDate;
+    private TextView tvPromo, tvAvailability, tvSpicyLevel, tvDrinkSize;
     private Button btnEditMenu, btnDeleteMenu;
+    private TextView tvPromoDate, tvAvailableTime;
+
 
     private DatabaseHelper databaseHelper;
     private int menuId;
@@ -40,7 +42,9 @@ public class MenuDetailActivity extends AppCompatActivity {
         tvAvailability = findViewById(R.id.tv_availability);
         tvSpicyLevel = findViewById(R.id.tv_spicy_level);
         tvDrinkSize = findViewById(R.id.tv_drink_size);
-        tvMenuDate = findViewById(R.id.tv_menu_date);
+        tvPromoDate = findViewById(R.id.tv_promo_date);
+        tvAvailableTime = findViewById(R.id.tv_available_time);
+
         btnEditMenu = findViewById(R.id.btn_edit_menu);
         btnDeleteMenu = findViewById(R.id.btn_delete_menu);
 
@@ -57,6 +61,7 @@ public class MenuDetailActivity extends AppCompatActivity {
         if (menuId != -1) {
             loadMenuDetail();
         }
+
 
         btnEditMenu.setOnClickListener(v -> {
             Intent intent = new Intent(this, EditMenuActivity.class);
@@ -102,8 +107,26 @@ public class MenuDetailActivity extends AppCompatActivity {
                 tvDrinkSize.setText("Ukuran Minuman: Tidak tersedia");
             }
 
-            // Tanggal
-            tvMenuDate.setText("Tanggal Ditambahkan: " + cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_TANGGAL)));
+            // Tanggal promo dan jam tersedie
+            if (cursor != null && cursor.moveToFirst()) {
+                // Data Promo
+                int promoIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_PROMO);
+                if (promoIndex != -1 && cursor.getInt(promoIndex) == 1) {
+                    String promoDate = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_TANGGAL));
+                    tvPromoDate.setText("Promo Berakhir pada: " + promoDate);
+                } else {
+                    tvPromoDate.setText("Promo Tidak Aktif");
+                }
+
+                // Waktu Tersedia
+                int availableIndex = cursor.getColumnIndex(DatabaseHelper.COLUMN_TERSEDIA);
+                if (availableIndex != -1 && cursor.getInt(availableIndex) == 1) {
+                    String availableTime = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_WAKTU));
+                    tvAvailableTime.setText("Waktu Tersedia: " + availableTime);
+                } else {
+                    tvAvailableTime.setText("Tidak Tersedia");
+                }
+            }
 
             // Gambar
             String imageUrl = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_FOTO));

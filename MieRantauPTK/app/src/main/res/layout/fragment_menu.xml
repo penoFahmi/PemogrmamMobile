@@ -1,124 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/bgMain"
     android:padding="16dp"
     tools:context=".admin.MenuFragment">
 
-    <!-- Search Bar -->
+            <!-- Search Bar -->
+            <LinearLayout
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:elevation="4dp"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Cari menu..."
+                    android:inputType="text"
+                    android:padding="8dp" />
+
+                <ImageView
+                    android:id="@+id/btn_search"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="12dp" />
+            </LinearLayout>
+
+            <!-- Filter -->
+            <HorizontalScrollView
+                android:id="@+id/filter_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/search_bar"
+                android:padding="8dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_filter_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Semua"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/btn_filter_mie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Mie"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/btn_filter_minuman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Minuman"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/btn_filter_extra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Extra"
+                        android:textColor="@android:color/white" />
+
+                    <Button
+                        android:id="@+id/btn_filter_dimsum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:text="Dimsum"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
     <LinearLayout
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_width="387dp"
+        android:layout_height="571dp"
+        android:layout_below="@id/filter_scroll"
+        android:orientation="vertical"
         android:padding="8dp"
-        android:background="@color/white"
-        android:elevation="4dp">
+        android:scrollbars="none">
 
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="0dp"
+        <TextView
+            android:id="@+id/tv_menu_title"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Cari menu..."
-            android:inputType="text"
-            android:padding="8dp" />
+            android:gravity="center"
+            android:paddingBottom="16dp"
+            android:text="Daftar Menu"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/btn_search"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:padding="12dp"
-            android:background="?attr/selectableItemBackground" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_menu_list"
+            android:layout_width="match_parent"
+            android:layout_height="515dp" />
+
     </LinearLayout>
-
-    <!-- Filter -->
-    <HorizontalScrollView
-        android:id="@+id/filter_scroll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_bar"
-        android:padding="8dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_filter_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Semua"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="@android:color/white"
-                android:layout_marginEnd="8dp" />
-
-            <Button
-                android:id="@+id/btn_filter_mie"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mie"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="@android:color/white"
-                android:layout_marginEnd="8dp" />
-
-            <Button
-                android:id="@+id/btn_filter_minuman"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Minuman"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="@android:color/white"
-                android:layout_marginEnd="8dp" />
-
-            <Button
-                android:id="@+id/btn_filter_extra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Extra"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="@android:color/white"
-                android:layout_marginEnd="8dp" />
-
-            <Button
-                android:id="@+id/btn_filter_dimsum"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dimsum"
-                android:backgroundTint="@color/colorPrimary"
-                android:textColor="@android:color/white" />
-        </LinearLayout>
-    </HorizontalScrollView>
-
-    <TextView
-        android:id="@+id/tv_menu_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Daftar Menu"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:paddingBottom="16dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_menu_list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
 
     <Button
         android:id="@+id/btn_add_menu"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tambah Menu"
         android:textColor="@android:color/white"
-        android:backgroundTint="@color/colorSecondaryDark"
-        android:layout_marginTop="8dp"
-        android:padding="12dp"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:backgroundTint="@color/orange_yellow"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:padding="10dp"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical" />
 
-</LinearLayout>
+</RelativeLayout>
