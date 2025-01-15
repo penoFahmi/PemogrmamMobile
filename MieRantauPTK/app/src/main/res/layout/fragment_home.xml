@@ -7,52 +7,129 @@
     android:orientation="vertical"
     tools:context=".admin.HomeFragment">
 
-    <!-- Search Bar -->
-    <SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:queryHint="Cari sesuatu..." />
-
-    <!-- Informasi Admin -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:src="@drawable/orang"
-            android:layout_marginEnd="16dp"
-            android:contentDescription="Avatar Admin" />
+        android:paddingStart="18dp"
+        android:background="@color/bgMain"
+        android:paddingEnd="18dp">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/admin_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nama Admin"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+            <!-- Search Bar -->
+            <SearchView
+                android:id="@+id/search_bar"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_margin="8dp"
+                android:queryHint="Cari sesuatu..." />
 
-            <TextView
-                android:id="@+id/welcome_message"
-                android:layout_width="wrap_content"
+            <!-- Informasi Admin -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Selamat datang, semoga harimu menyenangkan!"
-                android:textSize="14sp"
-                android:textColor="@color/colorPrimary" />
+                android:orientation="horizontal"
+                android:padding="6dp">
+
+                <ImageView
+                    android:layout_width="47dp"
+                    android:layout_height="49dp"
+                    android:layout_marginEnd="16dp"
+                    android:contentDescription="Avatar Admin"
+                    android:src="@drawable/orang" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/admin_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nama Admin"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/welcome_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Selamat datang, semoga harimu menyenangkan!"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
         </LinearLayout>
-    </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/weatherCard"
+                android:layout_width="101dp"
+                android:layout_height="113dp"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="6dp">
+
+                    <ImageView
+                        android:id="@+id/weatherImage"
+                        android:layout_width="66dp"
+                        android:layout_height="25dp"
+                        android:contentDescription="Weather Icon"
+                        android:src="@drawable/ic_weather" />
+
+                    <TextView
+                        android:id="@+id/weatherName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Condition: --"
+                        android:textColor="@color/colorSecondaryDark"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/weatherTemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Temp: --°C"
+                        android:textColor="@color/colorSecondaryDark"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/weatherLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="City: --"
+                        android:textColor="@color/colorSecondaryDark"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -60,8 +137,6 @@
         android:verticalScrollbarPosition="defaultPosition">
 
         <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -113,7 +188,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="10dp">
+                android:background="@color/colorSecondaryDark"
+                android:padding="6dp">
 
                 <!-- Kelola Menu Card -->
                 <androidx.cardview.widget.CardView
@@ -183,7 +259,7 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Users Card -->
+                <!-- Riwayat Card -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/riwayatCard"
                     android:layout_width="0dp"
@@ -222,83 +298,39 @@
                 android:id="@+id/row2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:padding="10dp">
+                android:orientation="vertical"
+                android:padding="8dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/weatherCard"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="8dp"
-                    android:background="@color/white">
+                <!-- Search Bar -->
+                <SearchView
+                    android:id="@+id/searchRecipe"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:queryHint="Cari resep..."
+                    android:iconifiedByDefault="false"
+                    android:layout_marginBottom="16dp" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:id="@+id/weatherImage"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
-                            android:src="@drawable/ic_weather"
-                            android:contentDescription="Weather Icon" />
-
-                        <TextView
-                            android:id="@+id/weatherName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Condition: --"
-                            android:textColor="@color/colorSecondaryDark"
-                            android:textSize="18sp"
-                            android:layout_marginTop="8dp" />
-
-                        <TextView
-                            android:id="@+id/weatherTemp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Temp: --°C"
-                            android:textColor="@color/colorSecondaryDark"
-                            android:textSize="16sp"
-                            android:layout_marginTop="4dp" />
-
-                        <TextView
-                            android:id="@+id/weatherLocation"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="City: --"
-                            android:textColor="@color/colorSecondaryDark"
-                            android:textSize="16sp"
-                            android:layout_marginTop="4dp" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-
+                <!-- Recipe Card -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/recipeCard"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="20dp"
                     app:cardElevation="8dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
 
                         <ImageView
                             android:id="@+id/recipeImage"
-                            android:layout_width="70dp"
-                            android:layout_height="70dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:scaleType="centerCrop"
                             android:src="@drawable/ic_recipe" />
 
                         <TextView

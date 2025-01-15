@@ -27,7 +27,7 @@ public class WeatherDetailFragment extends Fragment {
 
     private TextView tempTextView, descriptionTextView;
     private SearchView searchView;
-    private TextView humidityTextView, windSpeedTextView;
+    private TextView humidityTextView, windSpeedTextView, lastUpdatedTextView;
     private ImageView weatherDetailImage;
 
     @Override
@@ -46,6 +46,7 @@ public class WeatherDetailFragment extends Fragment {
         humidityTextView = view.findViewById(R.id.humidityTextView);
         windSpeedTextView = view.findViewById(R.id.windSpeedTextView);
         weatherDetailImage = view.findViewById(R.id.weatherDetailImage);
+        lastUpdatedTextView = view.findViewById(R.id.lastUpdatedTextView);
 
         if (getArguments() != null) {
             tempTextView.setText(String.format("Temperature: %s°C", getArguments().getString("temp", "N/A")));
@@ -66,6 +67,36 @@ public class WeatherDetailFragment extends Fragment {
         });
     }
 
+//    private void fetchWeatherData(String city) {
+//        WeatherApiService apiService = ApiClient.getClient().create(WeatherApiService.class);
+//        Call<WeatherResponse> call = apiService.getWeather("610c8937ce09473d9c972811251501", city);
+//
+//        call.enqueue(new Callback<WeatherResponse>() {
+//            @Override
+//            public void onResponse(Call<WeatherResponse> call, Response<WeatherResponse> response) {
+//                if (response.isSuccessful() && response.body() != null) {
+//                    WeatherResponse weather = response.body();
+//
+//                    tempTextView.setText(String.format("Temperature: %.1f°C", weather.current.tempC));
+//                    descriptionTextView.setText(String.format("Condition: %s", weather.current.condition.text));
+//                    humidityTextView.setText(String.format("Humidity: %d%%", weather.current.humidity));
+//                    windSpeedTextView.setText(String.format("Wind Speed: %.1f kph", weather.current.windKph));
+//
+//                    Glide.with(requireContext())
+//                            .load("https:" + weather.current.condition.icon)
+//                            .into(weatherDetailImage);
+//                } else {
+//                    Toast.makeText(getContext(), "City not found", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<WeatherResponse> call, Throwable t) {
+//                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
+
     private void fetchWeatherData(String city) {
         WeatherApiService apiService = ApiClient.getClient().create(WeatherApiService.class);
         Call<WeatherResponse> call = apiService.getWeather("610c8937ce09473d9c972811251501", city);
@@ -78,8 +109,9 @@ public class WeatherDetailFragment extends Fragment {
 
                     tempTextView.setText(String.format("Temperature: %.1f°C", weather.current.tempC));
                     descriptionTextView.setText(String.format("Condition: %s", weather.current.condition.text));
-                    humidityTextView.setText(String.format("Humidity: %d%%", weather.current.humidity));
-                    windSpeedTextView.setText(String.format("Wind Speed: %.1f kph", weather.current.windKph));
+                    humidityTextView.setText(String.format("%d%%", weather.current.humidity));
+                    windSpeedTextView.setText(String.format("%.1f kph", weather.current.windKph));
+                    lastUpdatedTextView.setText(weather.current.lastUpdated);
 
                     Glide.with(requireContext())
                             .load("https:" + weather.current.condition.icon)
@@ -95,5 +127,4 @@ public class WeatherDetailFragment extends Fragment {
             }
         });
     }
-
 }

@@ -35,9 +35,10 @@ public class EditMenuActivity extends AppCompatActivity {
     private TimePicker timePickerStart, timePickerEnd;
 
     private DatabaseHelper databaseHelper;
+    private String selectedCategory = null;
     private Bitmap selectedImageBitmap = null;
     private int menuId;
-    private String currentCategory, promoDate, availableStartTime, availableEndTime, currentImagePath;
+    private String currentCategory, promoDate, availableStartTime, availableEndTime, currentImagePath = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

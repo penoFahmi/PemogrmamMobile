@@ -11,14 +11,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.peno.mierantauptk.R;
 import com.peno.mierantauptk.api.ApiClient;
+import com.peno.mierantauptk.api.RecipeApiService;
 import com.peno.mierantauptk.api.WeatherApiService;
+import com.peno.mierantauptk.models.RecipeResponse;
 import com.peno.mierantauptk.models.WeatherResponse;
+
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,7 +31,11 @@ import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
-    CardView KelolaMenuCard, penjualanCard, riwayatCard, CardView;
+    private CardView KelolaMenuCard, penjualanCard, riwayatCard;
+    private CardView weatherCard, recipeCard;
+    private TextView weatherName, weatherTemp, weatherLocation, recipeName;
+    private ImageView weatherImage, recipeImage;
+    private SearchView searchRecipe;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,12 +43,21 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        CardView = view.findViewById(R.id.weatherCard);
+        // Initialize UI components
+        weatherCard = view.findViewById(R.id.weatherCard);
+        recipeCard = view.findViewById(R.id.recipeCard);
+        weatherName = view.findViewById(R.id.weatherName);
+        weatherTemp = view.findViewById(R.id.weatherTemp);
+        weatherLocation = view.findViewById(R.id.weatherLocation);
+        weatherImage = view.findViewById(R.id.weatherImage);
+        searchRecipe = view.findViewById(R.id.searchRecipe);
+        recipeName = view.findViewById(R.id.recipeName);
+        recipeImage = view.findViewById(R.id.recipeImage);
+
         // Initialize the CardView
         KelolaMenuCard = view.findViewById(R.id.KelolaMenuCard);
         penjualanCard = view.findViewById(R.id.penjualanCard);
         riwayatCard = view.findViewById(R.id.riwayatCard);
-        CardView = view.findViewById(R.id.weatherCard);
 
         // Set onClickListener
 //        KelolaMenuCard.setOnClickListener(new View.OnClickListener() {
@@ -90,19 +108,30 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        CardView.setOnClickListener(new View.OnClickListener() {
+
+        fetchWeatherData("Pontianak");
+        fetchRecipes("chicken");
+        // Set up search functionality
+        searchRecipe.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
-                fetchWeatherData("Jakarta"); // Ganti dengan nama kota
+            public boolean onQueryTextSubmit(String query) {
+                fetchRecipes(query); // Fetch recipes based on search query
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false; // Ignore real-time text changes
             }
         });
+
         return view;
 
     }
 
     private void fetchWeatherData(String city) {
         WeatherApiService apiService = ApiClient.getClient().create(WeatherApiService.class);
-        Call<WeatherResponse> call = apiService.getWeather("610c8937ce09473d9c972811251501", city);
+        Call<WeatherResponse> call = apiService.getWeather("0336cebc72cf458abd7165425251501", city);
 
         call.enqueue(new Callback<WeatherResponse>() {
             @Override
@@ -127,6 +156,7 @@ public class HomeFragment extends Fragment {
         TextView weatherLocation = requireView().findViewById(R.id.weatherLocation);
         ImageView weatherImage = requireView().findViewById(R.id.weatherImage);
 
+        // Update card view with weather data
         weatherName.setText(weather.current.condition.text);
         weatherTemp.setText(String.format("%.1f°C", weather.current.tempC));
         weatherLocation.setText(weather.location.name);
@@ -136,9 +166,8 @@ public class HomeFragment extends Fragment {
                 .load("https:" + weather.current.condition.icon)
                 .into(weatherImage);
 
-        CardView.setOnClickListener(v -> openWeatherDetailFragment(weather));
+        weatherCard.setOnClickListener(v -> openWeatherDetailFragment(weather));
     }
-
 
     private void openWeatherDetailFragment(WeatherResponse weather) {
         Bundle bundle = new Bundle();
@@ -146,6 +175,56 @@ public class HomeFragment extends Fragment {
         bundle.putString("description", weather.current.condition.text);
 
         WeatherDetailFragment fragment = new WeatherDetailFragment();
+        fragment.setArguments(bundle);
+
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container_fragment, fragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    private void fetchRecipes(String query) {
+        RecipeApiService apiService = ApiClient.getEdamamClient().create(RecipeApiService.class);
+        Call<RecipeResponse> call = apiService.getRecipes(query, "67b2fbc0", "d4362b19aff739ca5e1ce7e9502a5e9d");
+
+        call.enqueue(new Callback<RecipeResponse>() {
+            @Override
+            public void onResponse(Call<RecipeResponse> call, Response<RecipeResponse> response) {
+                if (response.isSuccessful() && response.body() != null && !response.body().hits.isEmpty()) {
+                    updateRecipeCard(response.body().hits.get(0).recipe); // Ambil resep pertama
+                } else {
+                    Toast.makeText(getContext(), "No recipes found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecipeResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void updateRecipeCard(RecipeResponse.Recipe recipe) {
+        TextView recipeName = requireView().findViewById(R.id.recipeName);
+        ImageView recipeImage = requireView().findViewById(R.id.recipeImage);
+
+        // Set data ke UI
+        recipeName.setText(recipe.label);
+        Glide.with(this).load(recipe.image).into(recipeImage);
+
+        // Set click listener untuk membuka detail
+        recipeCard.setOnClickListener(v -> openRecipeDetail(recipe));
+    }
+
+    private void openRecipeDetail(RecipeResponse.Recipe recipe) {
+        Bundle bundle = new Bundle();
+        bundle.putString("label", recipe.label);
+        bundle.putString("image", recipe.image);
+        bundle.putString("url", recipe.url);
+        bundle.putStringArrayList("ingredients", new ArrayList<>(recipe.ingredientLines));
+
+        RecipeDetailFragment fragment = new RecipeDetailFragment();
         fragment.setArguments(bundle);
 
         requireActivity().getSupportFragmentManager()

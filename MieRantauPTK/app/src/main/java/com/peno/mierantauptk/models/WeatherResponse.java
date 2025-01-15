@@ -3,6 +3,7 @@ package com.peno.mierantauptk.models;
 import com.google.gson.annotations.SerializedName;
 
 public class WeatherResponse {
+
     @SerializedName("location")
     public Location location;
 
@@ -44,6 +45,9 @@ public class WeatherResponse {
 
         @SerializedName("uv")
         public double uv;
+
+        @SerializedName("last_updated")
+        public String lastUpdated;
     }
 
     public static class Condition {
