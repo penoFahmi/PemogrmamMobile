@@ -72,6 +72,7 @@ public class EditMenuActivity extends AppCompatActivity {
         cbPromo.setOnCheckedChangeListener((buttonView, isChecked) -> layoutPromoDate.setVisibility(isChecked ? View.VISIBLE : View.GONE));
         cbTersedia.setOnCheckedChangeListener((buttonView, isChecked) -> layoutAvailableTime.setVisibility(isChecked ? View.VISIBLE : View.GONE));
 
+        loadCategories(currentCategory);
         btnSelectPromoDate.setOnClickListener(v -> showDatePicker());
         btnSelectImage.setOnClickListener(v -> openImagePicker());
         btnSave.setOnClickListener(v -> saveChanges());

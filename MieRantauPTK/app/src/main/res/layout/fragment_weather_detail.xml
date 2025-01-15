@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@color/white"
+    tools:context=".admin.WeatherDetailFragment">
+
+    <!-- Search View -->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search city..."
+        android:iconifiedByDefault="false"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather Details"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Weather Icon -->
+    <ImageView
+        android:id="@+id/weatherDetailImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/ic_weather"
+        android:contentDescription="Weather Icon"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Temperature -->
+    <TextView
+        android:id="@+id/tempTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Temperature: --°C"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <!-- Condition -->
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Condition: --"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <!-- Humidity -->
+    <TextView
+        android:id="@+id/humidityTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Humidity: --%"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimaryDark" />
+
+    <!-- Wind Speed -->
+    <TextView
+        android:id="@+id/windSpeedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wind Speed: -- kph"
+        android:textSize="18sp"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/colorPrimaryDark" />
+</LinearLayout>

@@ -2,7 +2,6 @@ plugins {
 //    id("com.android.application")
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
-
     alias(libs.plugins.android.application)
 }
 
@@ -35,7 +34,16 @@ android {
     }
 }
 
+
 dependencies {
+
+//    // API Cuaca
+//    implementation ("com.squareup.retrofit2:retrofit")
+//    implementation ("com.squareup.retrofit2:converter-gson")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
 
