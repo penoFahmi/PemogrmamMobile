@@ -344,4 +344,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM " + TABLE_DETAIL_TRANSAKSI + " WHERE " + COLUMN_ID + "_transaksi=?";
         return db.rawQuery(query, new String[]{String.valueOf(idTransaksi)});
     }
+
+    public Cursor getAdminData() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_ROLE_ID + " = 1 LIMIT 1", null);
+    }
+
 }

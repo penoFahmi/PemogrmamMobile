@@ -1,92 +1,102 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="@color/white"
-    android:elevation="2dp">
+    android:layout_margin="8dp"
+    card_view:cardElevation="4dp"
+    card_view:cardCornerRadius="12dp"
+    card_view:cardBackgroundColor="@color/whiteCardColor">
 
-    <!-- Informasi Item (Nama, Harga, Kuantitas) -->
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingEnd="8dp">
+        android:orientation="horizontal"
+        android:padding="12dp">
 
-        <!-- Nama Menu -->
-        <TextView
-            android:id="@+id/tv_cart_name"
-            android:layout_width="match_parent"
+        <!-- Informasi Item -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Nama Menu"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="@color/black" />
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingEnd="8dp">
 
-        <!-- Harga -->
-        <TextView
-            android:id="@+id/tv_cart_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Rp 0"
-            android:textSize="14sp"
-            android:textColor="@color/black" />
+            <!-- Nama Menu -->
+            <TextView
+                android:id="@+id/tv_cart_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Menu"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/black" />
 
-        <!-- Catatan -->
-        <TextView
-            android:id="@+id/tv_cart_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Catatan: Tidak ada"
-            android:textSize="12sp"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
+            <!-- Harga -->
+            <TextView
+                android:id="@+id/tv_cart_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Rp 0"
+                android:textSize="14sp"
+                android:textColor="@color/colorPrimary" />
 
-    <!-- Kuantitas dan Tombol -->
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+            <!-- Catatan -->
+            <TextView
+                android:id="@+id/tv_cart_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Catatan: Tidak ada"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/textSecondary" />
+        </LinearLayout>
 
+        <!-- Kuantitas dan Tombol -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:gravity="center">
 
-            <!-- Tombol Kurangi -->
-            <Button
-                android:id="@+id/btn_cart_remove"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:gravity="center" />
+                android:orientation="horizontal"
+                android:gravity="center">
 
-            <!-- Kuantitas -->
-            <TextView
-                android:id="@+id/tv_cart_quantity"
-                android:layout_width="48dp"
-                android:layout_height="36dp"
-                android:gravity="center"
-                android:text="1"
-                android:textSize="16sp"
-                android:textColor="@color/black" />
+                <!-- Tombol Kurangi -->
+                <Button
+                    android:id="@+id/btn_cart_remove"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorSecondary"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:gravity="center" />
 
-            <!-- Tombol Tambah -->
-            <Button
-                android:id="@+id/btn_cart_add"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:gravity="center" />
+                <!-- Kuantitas -->
+                <TextView
+                    android:id="@+id/tv_cart_quantity"
+                    android:layout_width="48dp"
+                    android:layout_height="36dp"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="16sp"
+                    android:textColor="@color/black" />
+
+                <!-- Tombol Tambah -->
+                <Button
+                    android:id="@+id/btn_cart_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="+"
+                    android:textColor="@color/white"
+                    android:textSize="18sp"
+                    android:gravity="center" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -3,34 +3,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/loginPageBackgroundColor"
     tools:context=".admin.RecipeDetailFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <!-- Gambar Resep -->
         <ImageView
             android:id="@+id/recipeImage"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="16dp"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"/>
 
+        <!-- Label Resep -->
         <TextView
             android:id="@+id/recipeLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/primaryTextColor" />
 
+        <!-- Bahan Resep -->
         <TextView
             android:id="@+id/recipeIngredients"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor" />
     </LinearLayout>
 
 </ScrollView>

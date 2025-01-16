@@ -2,36 +2,38 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
     <!-- Warna utama -->
-    <color name="colorPrimary">#D35400</color> <!-- Oranye lembut -->
-    <color name="colorPrimaryDark">#A04000</color> <!-- Oranye gelap -->
-    <color name="colorAccent">#F1C40F</color> <!-- Kuning pastel -->
+    <color name="colorPrimary">#E67E22</color> <!-- Oranye lembut -->
+    <color name="colorPrimaryDark">#CA6F1E</color> <!-- Oranye gelap -->
+    <color name="colorAccent">#F4D03F</color> <!-- Kuning pastel -->
+
     <!-- Tambahan jika diperlukan -->
-    <color name="colorSecondary">#C0392B</color> <!-- Merah lembut -->
-    <color name="colorSecondaryDark">#922B21</color> <!-- Merah gelap -->
+    <color name="colorSecondary">#E74C3C</color> <!-- Merah lembut -->
+    <color name="colorSecondaryDark">#FF5722</color> <!-- Merah gelap -->
 
     <!-- Warna untuk Teks -->
     <color name="whiteTextColor">#FFFFFF</color>
-    <color name="primaryTextColor">#FF5722</color>
+    <color name="primaryTextColor">#BF360C</color> <!-- Teks oranye gelap -->
+    <color name="secondaryTextColor">#5D4037</color> <!-- Teks cokelat gelap -->
     <color name="loginBkColor">#FFF3E0</color>
 
     <!-- Warna untuk Kartu -->
     <color name="whiteCardColor">#FFFFFF</color>
-    <color name="orange_yellow">#FFB74D</color>
-    <color name="productCard">#FF7043</color>
+    <color name="orange_yellow">#FFB74D</color> <!-- Oranye terang -->
+    <color name="productCard">#FF8A65</color> <!-- Oranye kemerahan -->
     <color name="toolbarIconColor">#FFFFFF</color>
-    <color name="loginPageBackgroundColor">#FFF3E0</color>
-    <color name="productGridBackgroundColor">#FFF8E1</color>
-
+    <color name="loginPageBackgroundColor">#FFFCF2</color>
+    <color name="productGridBackgroundColor">#FFF9E1</color>
 
     <!-- Warna Latar Belakang -->
-    <color name="backgroundColor">#FFEB3B</color>
-    <color name="primaryColor">#FFA000</color>
-    <color name="textPrimary">#3E2723</color>
-    <color name="textSecondary">#795548</color>
+    <color name="backgroundColor">#FFF59D</color> <!-- Kuning terang -->
+    <color name="primaryColor">#FFA726</color> <!-- Oranye cerah -->
+    <color name="textPrimary">#4E342E</color> <!-- Cokelat gelap -->
+    <color name="textSecondary">#795548</color> <!-- Cokelat -->
     <color name="bgMain">#FFFDE7</color>
 
-    <!-- warna tombol   -->
-    <color name="btnDangar">#FF0000</color>
-    <color name="btnPrimary">#03A9F4</color>
+    <!-- Warna Tombol -->
+    <color name="btnDangar">#D32F2F</color> <!-- Merah gelap -->
+    <color name="btnPrimary">#0288D1</color> <!-- Biru cerah -->
 </resources>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/loginPageBackgroundColor"
     android:padding="16dp"
     tools:context=".admin.crud.EditMenuActivity">
 
@@ -21,6 +21,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
+            android:textColor="@color/primaryTextColor"
             android:layout_marginBottom="16dp" />
 
         <!-- Nama Menu -->
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Kategori"
             android:textStyle="bold"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginTop="16dp" />
 
         <RadioGroup
@@ -67,9 +69,8 @@
             android:id="@+id/layout_checkboxes_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_marginTop="8dp" />
-
 
         <!-- Promo dan Tanggal Promo -->
         <LinearLayout
@@ -159,6 +160,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Pilih Gambar Baru"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@android:color/white"
             android:layout_marginTop="16dp" />
 
         <!-- Preview Gambar -->
@@ -168,6 +171,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
+            android:contentDescription="Preview Gambar Baru"
             android:background="@android:color/darker_gray" />
 
         <!-- Tombol Simpan -->
@@ -179,10 +183,16 @@
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@android:color/white" />
+
+        <!-- Tombol Batal -->
         <Button
             android:id="@+id/btn_batal_simpan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Batal Simpan"/>
+            android:text="Batal Simpan"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
     </LinearLayout>
+
 </ScrollView>

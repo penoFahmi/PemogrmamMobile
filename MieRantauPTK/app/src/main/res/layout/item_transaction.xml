@@ -4,26 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="12dp"
+    android:background="@color/bgMain"
+    android:elevation="4dp"
+    android:layout_margin="8dp"
+    android:clipToPadding="false"
+    android:clipChildren="false">
 
+    <!-- Header atau Tanggal -->
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Tanggal: 2025-01-11"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textColor="@color/textPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="4dp" />
 
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/backgroundColor"
+        android:layout_marginVertical="6dp" />
+
+    <!-- Total Transaksi -->
     <TextView
         android:id="@+id/tv_total"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Total: Rp0"
-        android:textSize="14sp" />
+        android:textSize="18sp"
+        android:textColor="@color/colorPrimary"
+        android:fontFamily="sans-serif-medium"
+        android:paddingBottom="4dp" />
 
+    <!-- Metode Pembayaran -->
     <TextView
         android:id="@+id/tv_payment_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Metode: Cash"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:textColor="@color/secondaryTextColor"
+        android:fontFamily="sans-serif" />
 </LinearLayout>

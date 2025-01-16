@@ -42,16 +42,17 @@ dependencies {
 //    implementation ("com.squareup.retrofit2:converter-gson")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-
+    implementation ("androidx.appcompat:appcompat:1.6.1") // Gunakan versi terbaru
 
     // Import the Firebase BoM
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
-
 
     // TODO: Add the dependencies for Firebase products you want to use
     // When using the BoM, don't specify versions in Firebase dependencies
     implementation("com.google.firebase:firebase-analytics")
 
+    implementation ("androidx.recyclerview:recyclerview:1.3.0")
+    implementation ("androidx.cardview:cardview:1.0.0")
 
     // Add the dependencies for any other desired Firebase products
     // https://firebase.google.com/docs/android/setup#available-libraries
@@ -59,6 +60,7 @@ dependencies {
     implementation ("com.github.bumptech.glide:glide:4.15.1")
     implementation(libs.legacy.support.v4)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

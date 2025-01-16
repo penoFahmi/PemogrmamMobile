@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
+    android:background="@color/loginPageBackgroundColor"
     tools:context=".admin.KasirFragment">
 
     <!-- Header -->
@@ -15,6 +16,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/primaryTextColor"
         android:paddingBottom="16dp" />
 
     <!-- ScrollView untuk konten yang dapat digulir -->
@@ -34,13 +36,17 @@
                 android:layout_height="wrap_content"
                 android:text="Daftar Menu"
                 android:textSize="18sp"
+                android:textColor="@color/secondaryTextColor"
                 android:paddingBottom="8dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_menu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="200dp" />
+                android:background="@android:color/white"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp" />
 
             <!-- Keranjang Belanja -->
             <TextView
@@ -48,14 +54,17 @@
                 android:layout_height="wrap_content"
                 android:text="Keranjang Belanja"
                 android:textSize="18sp"
-                android:paddingTop="16dp"
+                android:textColor="@color/secondaryTextColor"
                 android:paddingBottom="8dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="200dp" />
+                android:background="@android:color/white"
+                android:elevation="4dp"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp" />
 
             <!-- Total dan Metode Pembayaran -->
             <LinearLayout
@@ -65,11 +74,12 @@
                 android:paddingTop="16dp">
 
                 <TextView
+                    android:id="@+id/tv_total"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Total: Rp0"
-                    android:id="@+id/tv_total"
                     android:textSize="18sp"
+                    android:textColor="@color/primaryTextColor"
                     android:gravity="end"
                     android:paddingBottom="8dp" />
 
@@ -78,6 +88,7 @@
                     android:layout_height="wrap_content"
                     android:text="Metode Pembayaran"
                     android:textSize="16sp"
+                    android:textColor="@color/secondaryTextColor"
                     android:paddingBottom="4dp" />
 
                 <RadioGroup
@@ -111,7 +122,7 @@
     <!-- Tombol Aksi -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="84dp"
+        android:layout_height="wrap_content"
         android:gravity="end"
         android:orientation="horizontal"
         android:paddingTop="16dp">
@@ -120,13 +131,17 @@
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Batal" />
+            android:text="Batal"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_confirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="Konfirmasi" />
+            android:text="Konfirmasi"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

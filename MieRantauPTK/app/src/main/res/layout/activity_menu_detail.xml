@@ -5,13 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/loginPageBackgroundColor"
     tools:context=".admin.MenuDetailActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <!-- Gambar Menu -->
         <ImageView
@@ -29,6 +30,7 @@
             android:text="Nama Menu"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/primaryTextColor"
             android:layout_marginBottom="8dp" />
 
         <!-- Deskripsi -->
@@ -37,6 +39,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Deskripsi"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
 
         <!-- Harga -->
@@ -45,6 +49,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Harga"
+            android:textSize="16sp"
+            android:textColor="@color/primaryTextColor"
             android:layout_marginBottom="8dp" />
 
         <!-- Kategori -->
@@ -53,34 +59,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kategori"
+            android:textSize="16sp"
+            android:textColor="@color/primaryTextColor"
             android:layout_marginBottom="8dp" />
 
+        <!-- Promo -->
         <TextView
             android:id="@+id/tv_promo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Promo"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
 
+        <!-- Ketersediaan -->
         <TextView
             android:id="@+id/tv_availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ketersediaan"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
 
+        <!-- Level Pedas -->
         <TextView
             android:id="@+id/tv_spicy_level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Level Pedas"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
 
+        <!-- Ukuran Minuman -->
         <TextView
             android:id="@+id/tv_drink_size"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ukuran Minuman"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
 
         <!-- Tanggal Promo -->
@@ -89,6 +109,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Promo Berakhir pada:"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
 
         <!-- Waktu Tersedia -->
@@ -97,8 +119,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Waktu Tersedia:"
+            android:textSize="16sp"
+            android:textColor="@color/secondaryTextColor"
             android:layout_marginBottom="8dp" />
-
 
         <!-- Tombol Edit -->
         <Button
@@ -106,6 +129,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Edit Menu"
+            android:backgroundTint="@color/btnPrimary"
+            android:textColor="@color/whiteTextColor"
             android:layout_marginBottom="8dp" />
 
         <!-- Tombol Hapus -->
@@ -114,8 +139,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Hapus Menu"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:textColor="@android:color/white" />
+            android:backgroundTint="@color/btnDangar"
+            android:textColor="@color/whiteTextColor" />
     </LinearLayout>
 
 </ScrollView>

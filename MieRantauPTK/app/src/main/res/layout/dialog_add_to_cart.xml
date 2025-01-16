@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/loginPageBackgroundColor">
 
     <!-- Judul -->
     <TextView
@@ -13,33 +14,41 @@
         android:textSize="18sp"
         android:textStyle="bold"
         android:gravity="center"
+        android:textColor="@color/primaryTextColor"
         android:paddingBottom="16dp" />
 
     <!-- Jumlah -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jumlah" />
+        android:text="Jumlah"
+        android:textColor="@color/secondaryTextColor" />
 
     <EditText
         android:id="@+id/et_quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Masukkan jumlah"
-        android:inputType="number" />
+        android:inputType="number"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp" />
 
     <!-- Catatan -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Catatan"
+        android:textColor="@color/secondaryTextColor"
         android:layout_marginTop="8dp" />
 
     <EditText
         android:id="@+id/et_note"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Masukkan catatan tambahan (opsional)" />
+        android:hint="Masukkan catatan tambahan (opsional)"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp" />
 
     <!-- Tombol Aksi -->
     <LinearLayout
@@ -53,13 +62,17 @@
             android:id="@+id/btn_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Batal" />
+            android:text="Batal"
+            android:backgroundTint="@android:color/darker_gray"
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tambah"
-            android:layout_marginStart="8dp" />
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </LinearLayout>

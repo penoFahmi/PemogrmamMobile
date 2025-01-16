@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bgMain"
+    android:padding="16dp"
     tools:context=".admin.RiwayatFragment">
 
     <!-- Header -->
@@ -11,15 +13,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingBottom="16dp"
+        android:paddingBottom="8dp"
         android:text="Riwayat Transaksi"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black" />
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorSecondary"
+        android:layout_marginBottom="16dp" />
 
     <!-- Daftar Transaksi -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_transactions"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false" />
+        android:clipToPadding="false"
+        android:background="@drawable/recycler_background"
+        android:padding="8dp"
+        android:layout_marginTop="8dp" />
 </LinearLayout>

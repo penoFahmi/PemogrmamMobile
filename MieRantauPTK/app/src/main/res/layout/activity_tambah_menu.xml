@@ -5,10 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="18dp"
+    android:background="@color/loginPageBackgroundColor"
+    android:padding="16dp"
     tools:context=".admin.crud.TambahMenuActivity">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,6 +22,7 @@
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"
+            android:textColor="@color/primaryTextColor"
             android:paddingBottom="16dp" />
 
         <!-- Nama Menu -->
@@ -31,7 +31,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nama Menu"
-            android:inputType="text" />
+            android:inputType="text"
+            android:layout_marginBottom="8dp" />
 
         <!-- Deskripsi -->
         <EditText
@@ -40,7 +41,7 @@
             android:layout_height="wrap_content"
             android:hint="Deskripsi"
             android:inputType="textMultiLine"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="8dp" />
 
         <!-- Harga -->
         <EditText
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:hint="Harga"
             android:inputType="numberDecimal"
-            android:layout_marginTop="8dp" />
+            android:layout_marginBottom="8dp" />
 
         <!-- Pilihan Kategori -->
         <TextView
@@ -73,18 +74,19 @@
             android:orientation="vertical"
             android:layout_marginTop="8dp" />
 
+        <!-- Promo dan Ketersediaan -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Promo dan Ketersediaan"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
 
-        <!-- Promo dan Ketersediaan -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="8dp">
 
             <CheckBox
                 android:id="@+id/cb_promo"
@@ -161,6 +163,7 @@
             android:id="@+id/btn_select_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorAccent"
             android:text="Pilih Gambar"
             android:layout_marginTop="16dp" />
 

@@ -5,15 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/bgMain"
+    android:padding="8dp"
     tools:context=".admin.HomeFragment">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingStart="18dp"
-        android:background="@color/bgMain"
-        android:paddingEnd="18dp">
+        android:padding="16dp"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:layout_marginBottom="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -25,9 +36,11 @@
             <SearchView
                 android:id="@+id/search_bar"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_margin="8dp"
-                android:queryHint="Cari sesuatu..." />
+                android:layout_height="40dp"
+                android:queryHint="Cari sesuatu..."
+                android:iconifiedByDefault="false"
+                android:background="@drawable/searchview_background"
+                android:layout_marginBottom="8dp" />
 
             <!-- Informasi Admin -->
             <LinearLayout
@@ -37,11 +50,11 @@
                 android:padding="6dp">
 
                 <ImageView
-                    android:layout_width="47dp"
-                    android:layout_height="49dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/orang"
                     android:layout_marginEnd="16dp"
-                    android:contentDescription="Avatar Admin"
-                    android:src="@drawable/orang" />
+                    android:contentDescription="Avatar Admin" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -62,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Selamat datang, semoga harimu menyenangkan!"
-                        android:textColor="@color/colorPrimary"
+                        android:textColor="@color/secondaryTextColor"
                         android:textSize="12sp" />
                 </LinearLayout>
             </LinearLayout>
@@ -80,7 +93,6 @@
                 android:layout_height="113dp"
                 android:layout_margin="8dp"
                 android:layout_weight="1"
-                android:background="@color/white"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="8dp">
 
@@ -102,19 +114,18 @@
                         android:id="@+id/weatherName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Condition: --"
-                        android:textColor="@color/colorSecondaryDark"
-                        android:textSize="12sp" />
+                        android:text="Sunny"
+                        android:textSize="14sp"
+                        android:textColor="@color/primaryTextColor"
+                        android:layout_marginTop="8dp" />
 
                     <TextView
                         android:id="@+id/weatherTemp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="Temp: --°C"
-                        android:textColor="@color/colorSecondaryDark"
-                        android:textSize="10sp" />
+                        android:text="27°C"
+                        android:textSize="12sp"
+                        android:textColor="@color/secondaryTextColor" />
 
                     <TextView
                         android:id="@+id/weatherLocation"
@@ -140,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingTop="20dp">
+            android:paddingTop="8dp">
 
             <!-- Nama dan Deskripsi -->
             <LinearLayout
@@ -148,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingStart="18dp"
-                android:paddingEnd="18dp">
+                android:paddingEnd="8dp">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -184,11 +195,12 @@
 
             <!-- Row CardView -->
             <LinearLayout
+                android:layout_marginTop="12dp"
                 android:id="@+id/row1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:background="@color/colorSecondaryDark"
+                android:background="@color/backgroundColor"
                 android:padding="6dp">
 
                 <!-- Kelola Menu Card -->
@@ -204,6 +216,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:background="@color/colorAccent"
                         android:orientation="vertical"
                         android:gravity="center"
                         android:padding="16dp">
@@ -239,6 +252,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:background="@color/colorAccent"
                         android:gravity="center"
                         android:padding="16dp">
 
@@ -273,6 +287,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
+                        android:background="@color/colorAccent"
                         android:gravity="center"
                         android:padding="16dp">
 
@@ -301,6 +316,16 @@
                 android:orientation="vertical"
                 android:padding="8dp">
 
+                <TextView
+                    android:id="@+id/rekomendasiName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:text="Rekomendasi Masakan"
+                    android:textColor="@color/colorSecondaryDark"
+                    android:textSize="18sp" />
+
                 <!-- Search Bar -->
                 <SearchView
                     android:id="@+id/searchRecipe"
@@ -308,6 +333,7 @@
                     android:layout_height="wrap_content"
                     android:queryHint="Cari resep..."
                     android:iconifiedByDefault="false"
+                    android:background="@drawable/searchview_background"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Recipe Card -->
@@ -322,8 +348,9 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
+                        android:background="@color/whiteCardColor"
                         android:gravity="center"
+                        android:orientation="vertical"
                         android:padding="16dp">
 
                         <ImageView
@@ -337,10 +364,10 @@
                             android:id="@+id/recipeName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="Lihat Resep"
                             android:textColor="@color/colorSecondaryDark"
-                            android:textSize="18sp"
-                            android:layout_marginTop="8dp" />
+                            android:textSize="18sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
