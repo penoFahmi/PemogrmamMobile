@@ -65,7 +65,7 @@
                         android:id="@+id/admin_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nama Admin"
+                        android:text="Peno"
                         android:textColor="@color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
@@ -179,7 +179,7 @@
                         android:id="@+id/amazonDesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Shop from A to Z"
+                        android:text="Mie pedas nikmat, mengumggah selera"
                         android:textColor="@color/colorSecondaryDark"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -295,7 +295,7 @@
                             android:id="@+id/userImage"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
-                            android:src="@drawable/orang" />
+                            android:src="@drawable/bubu" />
 
                         <TextView
                             android:id="@+id/elecName"
